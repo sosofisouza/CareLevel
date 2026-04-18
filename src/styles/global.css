@@ -1,0 +1,30 @@
+/**
+ * styles/global.css
+ * ESTILOS GLOBAIS — variáveis de cor e reset básico.
+ * 
+ * Defina aqui as cores e fontes do design.
+ * Todos os componentes herdam estas variáveis via var(--nome).
+ * 
+ * Para mudar a cor principal do site: altere apenas --cor-primaria aqui.
+ */
+:root {
+  --cor-primaria:   #3aaa78;   /* verde principal do CareLevel */
+  --cor-primaria-escura: #2d8a62;
+  --cor-fundo:      #f0faf6;   /* fundo claro esverdeado */
+  --cor-texto:      #1a1a1a;
+  --cor-texto-leve: #666;
+  --cor-borda:      #d0e8dd;
+  --raio-card:      16px;
+  --sombra:         0 2px 12px rgba(0, 0, 0, 0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Nunito', sans-serif;
+  background: var(--cor-fundo);
+  color: var(--cor-texto);
+}
+
+h1 { font-size: 28px; font-weight: 700; }
+h2 { font-size: 20px; font-weight: 600; }

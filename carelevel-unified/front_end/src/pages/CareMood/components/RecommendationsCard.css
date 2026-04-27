@@ -1,0 +1,139 @@
+.rec-card {
+  background: #fff;
+  padding: 32px 32px 40px;
+  min-height: 541px;
+  display: flex;
+  flex-direction: column;
+}
+
+.rec-title {
+  font-size: 24px;
+  font-weight: 590;
+  color: var(--c-900);
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.rec-divider {
+  width: 100%;
+  max-width: 380px;
+  height: 3px;
+  background: var(--c-900);
+  border-radius: 2px;
+  align-self: center;
+  margin-bottom: 24px;
+}
+
+.rec-layout {
+  display: flex;
+  gap: 24px;
+  flex: 1;
+}
+
+/* ── Avatar column ── */
+.rec-avatar-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.avatar-green-ring {
+  position: relative;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background: var(--c-700);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.avatar-photo {
+  width: 138px;
+  height: 138px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.avatar-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.avatar-photo svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.avatar-status-dot {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 3px solid #fff;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  transition: background-color 0.4s ease;
+}
+
+.status-box {
+  background: var(--c-600);
+  border-radius: var(--radius);
+  width: 130px;
+  min-height: 87px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 10px;
+  box-shadow: var(--shadow);
+}
+
+.status-label {
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.status-colored-pill {
+  border-radius: 25px;
+  width: 105px;
+  height: 31px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.status-value {
+  font-size: 13px;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: 0.5px;
+}
+
+/* ── Texts column ── */
+.rec-texts-col {
+  background: var(--c-50);
+  border-radius: var(--radius);
+  padding: 20px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  flex: 1;
+}
+
+.rec-texts-col p {
+  font-size: 14px;
+  font-weight: 700;
+  color: #000;
+  line-height: 17px;
+  text-align: justify;
+}

@@ -1,0 +1,242 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;0,9..40,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  /* ── Variáveis do care-level-privado (NavBar, Login, Home) ── */
+  --fundo: #E8F5F1;
+  --text: #6b6375;
+  --text-h: #08060d;
+  --text-dark: #1a1a1a;
+  --text-medium: #3d5a4d;
+  --bg: #fff;
+  --border: #e5e4e7;
+  --code-bg: #f4f3ec;
+  --accent: #aa3bff;
+  --accent-bg: rgba(170, 59, 255, 0.1);
+  --accent-border: rgba(170, 59, 255, 0.5);
+  --social-bg: rgba(244, 243, 236, 0.5);
+  --shadow: 0px 4px 4px rgba(0,0,0,0.25);
+  --shadow-sm: 0 1px 4px rgba(0, 0, 0, 0.08);
+
+  --green-primary: #1c9770;
+  --green-dark: #146b50;
+  --green-medium: #3aaa78;
+  --green-pale: #e8f5ef;
+
+  --font-display: 'DM Sans', 'Nunito', system-ui, sans-serif;
+  --font-body: 'DM Sans', 'Nunito', system-ui, sans-serif;
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+
+  /* ── Variáveis do CareLevelGustavo/RankingSofia (Recompensas, Ranking) ── */
+  --cor-primaria: #3aaa78;
+  --cor-primaria-escura: #2d8a62;
+  --cor-fundo: #f0faf6;
+  --cor-texto: #1a1a1a;
+  --cor-texto-leve: #666;
+  --cor-borda: #d0e8dd;
+  --raio-card: 16px;
+  --sombra: 0 2px 12px rgba(0, 0, 0, 0.08);
+
+  /* Variáveis do caremood */
+  --c-50:  #E8F5F1;
+  --c-100: #B9DFD3;
+  --c-200: #97CFBD;
+  --c-300: #67B99F;
+  --c-400: #49AC8D;
+  --c-500: #1C9770;
+  --c-600: #198966;
+  --c-700: #146B50;
+  --c-800: #0F533E;
+  --c-900: #0C3F2F;
+
+  --bg-page: linear-gradient(0deg, rgba(255,255,255,0.1), rgba(255,255,255,0.1)), #E8F5F1;
+  --shadow-caremood: 0px 4px 4px rgba(0,0,0,0.25);
+  --radius: 25px;
+  --radius-xs: 10px;
+  --font: 'DM Sans', 'SF Pro', Arial, sans-serif;
+
+  /* Espaçamentos (variaveis.css) */
+  --espaco-sm: 8px;
+  --espaco-md: 16px;
+  --espaco-lg: 24px;
+  --espaco-xl: 40px;
+  --fonte-pequena: 12px;
+  --fonte-normal: 14px;
+  --fonte-media: 16px;
+  --fonte-grande: 20px;
+  --breakpoint-mobile: 768px;
+
+  font: 18px/145% var(--font-body);
+  letter-spacing: 0.18px;
+  color-scheme: light dark;
+  color: var(--text);
+  background: var(--bg);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@media (max-width: 1024px) {
+  :root {
+    font-size: 16px;
+  }
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--cor-texto);
+}
+
+#root {
+  max-width: 100%;
+  margin: 0 auto;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+}
+
+a {
+  text-decoration: none;
+}
+
+h1,
+h2 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  color: var(--text-h);
+}
+
+h1 {
+  font-size: 56px;
+  letter-spacing: -1.68px;
+  margin: 32px 0;
+}
+
+h2 {
+  font-size: 24px;
+  line-height: 118%;
+  letter-spacing: -0.24px;
+  margin: 0 0 8px;
+}
+
+@media (max-width: 1024px) {
+  h1 {
+    font-size: 36px;
+    margin: 20px 0;
+  }
+  h2 {
+    font-size: 20px;
+  }
+}
+
+p {
+  margin: 0;
+}
+
+/* Login page styles */
+.login-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #e8f5f1 0%, #c8e6d8 100%);
+  padding: 20px;
+}
+
+.login-card {
+  background: #fff;
+  border-radius: 20px;
+  padding: 40px 36px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.login-card h1 {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--green-dark);
+  margin: 0;
+  letter-spacing: -0.5px;
+}
+
+.login-card p {
+  color: var(--cor-texto-leve);
+  font-size: 14px;
+  margin-top: -12px;
+}
+
+.login-card label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #22614e;
+}
+
+.login-card input {
+  border: 1.5px solid #d4e8de;
+  border-radius: 12px;
+  background: #f8fcfa;
+  padding: 12px 14px;
+  font-size: 14px;
+  color: #244138;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.login-card input:focus {
+  border-color: #4ab594;
+  box-shadow: 0 0 0 3px rgba(74, 181, 148, 0.2);
+}
+
+.login-card button[type="submit"] {
+  background: var(--green-medium);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  padding: 13px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.login-card button[type="submit"]:hover {
+  background: var(--green-dark);
+}
+
+.login-card button[type="submit"]:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.error-msg {
+  background: #ffe8e8;
+  color: #9a2424;
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-size: 13px;
+}
+
+/* Additional variables used by ServicesGrid/ServiceCard */
+:root {
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.1);
+}

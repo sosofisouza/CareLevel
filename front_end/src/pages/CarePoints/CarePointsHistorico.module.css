@@ -1,0 +1,218 @@
+/* =====================================================
+   CarePointsHistorico.module.css
+   ===================================================== */
+
+.page {
+  background: #e6f4f0;
+  min-height: 100vh;
+  font-family: 'Nunito', sans-serif;
+  padding-bottom: 40px;
+}
+
+.main {
+  padding: 32px 16px;
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  width: 100%;
+  max-width: 850px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* ===== HEADER ===== */
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+@media (min-width: 640px) {
+  .header {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.headerLeft {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.btnVoltar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #93d3bc;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #1a4d3a;
+  font-weight: 900;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: inherit;
+  transition: filter 0.15s;
+}
+
+.btnVoltar:hover {
+  filter: brightness(0.95);
+}
+
+.titulo {
+  font-size: 20px;
+  font-weight: 900;
+  color: #1a4d3a;
+  margin: 0;
+}
+
+.buscaWrapper {
+  position: relative;
+  width: 100%;
+}
+
+@media (min-width: 640px) {
+  .buscaWrapper {
+    width: 256px;
+  }
+}
+
+.buscaInput {
+  background: #93d3bc;
+  border-radius: 9999px;
+  padding: 6px 16px;
+  font-size: 12px;
+  color: #1a4d3a;
+  width: 100%;
+  border: none;
+  outline: none;
+  font-family: inherit;
+}
+
+.buscaInput::placeholder {
+  color: rgba(26, 77, 58, 0.6);
+}
+
+.buscaIcon {
+  position: absolute;
+  right: 16px;
+  top: 6px;
+  color: #1a4d3a;
+}
+
+/* ===== TABELA ===== */
+.tabelaWrapper {
+  background: #7ec4ae;
+  border-radius: 40px;
+  padding: 24px;
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.tabelaHeader {
+  display: none;
+  grid-template-columns: 120px 1fr 120px;
+  padding: 0 32px;
+  margin-bottom: 8px;
+  color: #1a4d3a;
+  font-weight: 700;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+@media (min-width: 640px) {
+  .tabelaHeader {
+    display: grid;
+  }
+}
+
+.tabelaHeaderRight {
+  text-align: right;
+}
+
+.tabelaLinhas {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.semResultados {
+  text-align: center;
+  color: #1a4d3a;
+  font-weight: 700;
+  font-size: 14px;
+  padding: 16px 0;
+}
+
+/* ===== HISTORICO ROW ===== */
+.historicoRow {
+  border-radius: 9999px;
+  padding: 10px 24px;
+  display: grid;
+  grid-template-columns: 100px 1fr 100px;
+  align-items: center;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+@media (min-width: 640px) {
+  .historicoRow {
+    grid-template-columns: 120px 1fr 120px;
+  }
+}
+
+.historicoDate {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.historicoIcon {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.historicoDateText {
+  font-size: 10px;
+  color: white;
+  font-weight: 700;
+}
+
+.historicoAtividade {
+  font-size: 10px;
+  color: white;
+  font-weight: 700;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding-right: 16px;
+}
+
+.historicoPontosWrapper {
+  text-align: right;
+}
+
+.historicoPontos {
+  background: #1a4d3a;
+  color: white;
+  padding: 4px 16px;
+  border-radius: 9999px;
+  font-size: 11px;
+  font-weight: 900;
+  display: inline-block;
+  min-width: 70px;
+  text-align: center;
+}

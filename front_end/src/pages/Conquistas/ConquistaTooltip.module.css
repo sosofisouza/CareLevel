@@ -1,0 +1,65 @@
+/* =====================================================
+   ConquistaTooltip.module.css
+   ===================================================== */
+
+.tooltipCard {
+  background: #5bbf99;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+.tooltipHeader {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 12px 8px;
+}
+
+.tooltipIconWrapper {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #3d9a72;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.tooltipTitulo {
+  color: white;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.2;
+}
+
+.tooltipDescricao {
+  color: white;
+  font-size: 12px;
+  padding: 0 12px 12px;
+  line-height: 1.4;
+  opacity: 0.9;
+  margin: 0;
+}
+
+.tooltipRodape {
+  margin: 0 12px 12px;
+  border-radius: 12px;
+  padding: 6px 12px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.tooltipRodapeText {
+  color: white;
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.tooltipArrow {
+  margin: 0 auto;
+  width: 12px;
+  height: 12px;
+  background: #5bbf99;
+}

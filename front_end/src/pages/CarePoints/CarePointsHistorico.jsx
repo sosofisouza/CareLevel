@@ -1,0 +1,90 @@
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import NavBar from "../../Components/NavBar/NavBar";
+import { historico, PAGE_SIZE } from "../../data/historico";
+import styles from "./CarePointsHistorico.module.css";
+
+function HistoricoRow({ row }) {
+  return (
+    <div
+      className={styles.historicoRow}
+      style={{ background: row.tipo === "debito" ? "#3a8a69" : "#6fcfaa" }}
+    >
+      <div className={styles.historicoDate}>
+        <div className={styles.historicoIcon}>
+          {row.tipo === "debito" ? "↓" : "↑"}
+        </div>
+        <span className={styles.historicoDateText}>{row.data}</span>
+      </div>
+      <span className={styles.historicoAtividade}>{row.atividade}</span>
+      <div className={styles.historicoPontosWrapper}>
+        <span className={styles.historicoPontos}>{row.pontos}</span>
+      </div>
+    </div>
+  );
+}
+
+export default function CarePointsHistorico() {
+  const [busca, setBusca] = useState("");
+  const navigate = useNavigate();
+
+  const restante = historico
+    .slice(PAGE_SIZE)
+    .filter((row) =>
+      row.atividade.toLowerCase().includes(busca.toLowerCase())
+    );
+
+  return (
+    <div className={styles.page}>
+      <NavBar />
+
+      <main className={styles.main}>
+        <div className={styles.container}>
+
+          {/* Header */}
+          <div className={styles.header}>
+            <div className={styles.headerLeft}>
+              <button
+                onClick={() => navigate("/carepoints")}
+                className={styles.btnVoltar}
+              >
+                ←
+              </button>
+              <h2 className={styles.titulo}>Histórico de CarePoints</h2>
+            </div>
+
+            <div className={styles.buscaWrapper}>
+              <input
+                placeholder="Buscar..."
+                value={busca}
+                onChange={(e) => setBusca(e.target.value)}
+                className={styles.buscaInput}
+              />
+              <span className={styles.buscaIcon}>🔍</span>
+            </div>
+          </div>
+
+          {/* Tabela */}
+          <div className={styles.tabelaWrapper}>
+            <div className={styles.tabelaHeader}>
+              <span>Data</span>
+              <span>Atividade</span>
+              <span className={styles.tabelaHeaderRight}>Pontos</span>
+            </div>
+
+            <div className={styles.tabelaLinhas}>
+              {restante.length > 0 ? (
+                restante.map((row, i) => <HistoricoRow key={i} row={row} />)
+              ) : (
+                <p className={styles.semResultados}>
+                  Nenhum resultado encontrado.
+                </p>
+              )}
+            </div>
+          </div>
+
+        </div>
+      </main>
+    </div>
+  );
+}

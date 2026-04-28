@@ -1,0 +1,467 @@
+/* =====================================================
+   CarePoints.module.css
+   ===================================================== */
+
+.page {
+  background: #e6f4f0;
+  min-height: 100vh;
+  font-family: 'Nunito', sans-serif;
+  padding-bottom: 40px;
+}
+
+.main {
+  padding: 32px 16px;
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  width: 100%;
+  max-width: 850px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+/* ===== TOP SECTION ===== */
+.topSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+@media (min-width: 768px) {
+  .topSection {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+}
+
+/* ===== CARD + GRAFICO ===== */
+.cardGrafico {
+  display: flex;
+  border-radius: 35px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  width: 100%;
+  height: 200px;
+  flex-shrink: 0;
+}
+
+@media (min-width: 768px) {
+  .cardGrafico {
+    max-width: 500px;
+  }
+}
+
+.cardLeft {
+  background: #93d3bc;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 50%;
+}
+
+.cardPontos {
+  font-size: 36px;
+  font-weight: 900;
+  color: white;
+  margin: 0;
+}
+
+.cardTitulo {
+  font-size: 20px;
+  font-weight: 700;
+  color: white;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.cardValidade {
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0;
+}
+
+.btnResgate {
+  background: #53ad8b;
+  color: white;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 9999px;
+  font-size: 10px;
+  font-weight: 900;
+  margin-top: 12px;
+  cursor: pointer;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: filter 0.15s;
+  font-family: inherit;
+}
+
+.btnResgate:hover {
+  filter: brightness(0.95);
+}
+
+.cardRight {
+  background: #1a4d3a;
+  width: 50%;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+.graficoLabel {
+  font-size: 9px;
+  color: #93d3bc;
+  text-align: center;
+  font-weight: 700;
+  margin-bottom: 12px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.graficoArea {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
+  flex: 1;
+  padding: 0 8px;
+}
+
+/* ===== BAR ===== */
+.barWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.bar {
+  width: 20px;
+  border-radius: 2px 2px 0 0;
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+
+.bar:hover {
+  opacity: 0.8;
+}
+
+.barLabel {
+  font-size: 8px;
+  color: #93d3bc;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.barTooltip {
+  background: #1a4d3a;
+  border-radius: 8px;
+  padding: 4px 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  font-size: 10px;
+  font-weight: 700;
+  color: white;
+  white-space: nowrap;
+}
+
+.barTooltipArrow {
+  margin: 0 auto;
+  width: 8px;
+  height: 8px;
+  background: #1a4d3a;
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+}
+
+/* ===== PRODUTOS ===== */
+.produtos {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  overflow-x: auto;
+}
+
+@media (min-width: 768px) {
+  .produtos {
+    flex-direction: column;
+    overflow-x: visible;
+  }
+}
+
+.produtoCard {
+  background: white;
+  border-radius: 25px;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  width: 130px;
+  flex-shrink: 0;
+}
+
+.produtoImg {
+  width: 100%;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 20px;
+  background: #f3f4f6;
+  margin-bottom: 8px;
+}
+
+.produtoNome {
+  font-size: 8px;
+  font-weight: 900;
+  text-align: center;
+  color: #4b5563;
+  margin-bottom: 4px;
+}
+
+.produtoPrecos {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.produtoPreco {
+  background: #1a4d3a;
+  color: white;
+  font-size: 9px;
+  padding: 2px 8px;
+  border-radius: 9999px;
+  font-weight: 700;
+}
+
+.produtoPrecoOld {
+  font-size: 9px;
+  color: #d1d5db;
+  text-decoration: line-through;
+}
+
+/* ===== HISTÓRICO SECTION ===== */
+.historicoSection {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.historicoHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+@media (min-width: 640px) {
+  .historicoHeader {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.historicoHeaderLeft {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.historicoTitulo {
+  font-size: 20px;
+  font-weight: 900;
+  color: #1a4d3a;
+  margin: 0;
+}
+
+.filtroTabs {
+  display: flex;
+  background: #93d3bc;
+  padding: 4px;
+  border-radius: 9999px;
+}
+
+.filtroBtn {
+  font-size: 10px;
+  padding: 4px 12px;
+  border-radius: 9999px;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  background: transparent;
+  color: #1a4d3a;
+  transition: background 0.15s, color 0.15s;
+  font-family: inherit;
+}
+
+.filtroBtnAtivo {
+  background: #1a4d3a;
+  color: white;
+}
+
+.buscaWrapper {
+  position: relative;
+  width: 100%;
+}
+
+@media (min-width: 640px) {
+  .buscaWrapper {
+    width: 256px;
+  }
+}
+
+.buscaInput {
+  background: #93d3bc;
+  border-radius: 9999px;
+  padding: 6px 16px;
+  font-size: 12px;
+  color: #1a4d3a;
+  width: 100%;
+  border: none;
+  outline: none;
+  font-family: inherit;
+}
+
+.buscaInput::placeholder {
+  color: rgba(26, 77, 58, 0.6);
+}
+
+.buscaIcon {
+  position: absolute;
+  right: 16px;
+  top: 6px;
+  color: #1a4d3a;
+}
+
+/* ===== TABELA ===== */
+.tabelaWrapper {
+  background: #93d3bc;
+  border-radius: 40px;
+  padding: 24px;
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.tabelaHeader {
+  display: none;
+  grid-template-columns: 120px 1fr 120px;
+  padding: 0 32px;
+  margin-bottom: 8px;
+  color: #1a4d3a;
+  font-weight: 700;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+@media (min-width: 640px) {
+  .tabelaHeader {
+    display: grid;
+  }
+}
+
+.tabelaHeaderRight {
+  text-align: right;
+}
+
+.tabelaLinhas {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* ===== HISTORICO ROW ===== */
+.historicoRow {
+  border-radius: 9999px;
+  padding: 10px 24px;
+  display: grid;
+  grid-template-columns: 100px 1fr 100px;
+  align-items: center;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+@media (min-width: 640px) {
+  .historicoRow {
+    grid-template-columns: 120px 1fr 120px;
+  }
+}
+
+.historicoDate {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.historicoIcon {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.historicoDateText {
+  font-size: 10px;
+  color: white;
+  font-weight: 700;
+}
+
+.historicoAtividade {
+  font-size: 10px;
+  color: white;
+  font-weight: 700;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding-right: 16px;
+}
+
+.historicoPontosWrapper {
+  text-align: right;
+}
+
+.historicoPontos {
+  background: #1a4d3a;
+  color: white;
+  padding: 4px 16px;
+  border-radius: 9999px;
+  font-size: 11px;
+  font-weight: 900;
+  display: inline-block;
+  min-width: 70px;
+  text-align: center;
+}
+
+/* ===== VER MAIS ===== */
+.verMaisWrapper {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 16px;
+}
+
+.btnVerMais {
+  background: #1a4d3a;
+  color: white;
+  padding: 6px 24px;
+  border-radius: 9999px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  transition: filter 0.15s;
+}
+
+.btnVerMais:hover {
+  filter: brightness(1.1);
+}

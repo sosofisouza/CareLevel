@@ -12,7 +12,7 @@ const NAV_LINKS = [
   { label: 'Ranking',     to: '/ranking' },
   { label: 'Recompensas', to: '/recompensas' },
   { label: 'Conquistas',  to: '/conquistas' },
-  { label: 'CarePoints',  to: '/pontos' },
+  { label: 'CarePoints',  to: '/carepoints' },
 ];
 
 export default function Navbar() {

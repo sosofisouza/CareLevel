@@ -1,0 +1,106 @@
+/* ============================================================
+   CareMood Layout — scoped under .cm-page to avoid Bootstrap conflicts
+   ============================================================ */
+
+.page.cm-page {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 48px 60px 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  background: var(--bg-page, linear-gradient(0deg, rgba(255,255,255,0.1), rgba(255,255,255,0.1)), #E8F5F1);
+  min-height: calc(100vh - 64px);
+}
+
+.top-row {
+  display: grid;
+  grid-template-columns: 1fr 0.95fr;
+  gap: 28px;
+  align-items: stretch;
+}
+
+.bottom-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  align-items: start;
+}
+
+/* ── CRITICAL: Neutralize Bootstrap .card display override ── */
+/* Bootstrap forces display:flex + flex-direction:column on .card, breaking all layouts */
+/* We use !important to win the specificity battle */
+.cm-page .card {
+  border: none !important;
+  border-radius: var(--radius) !important;
+  box-shadow: var(--shadow) !important;
+}
+
+/* mood-bar: HORIZONTAL flex row (the most critical fix) */
+.cm-page .mood-bar {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: space-around !important;
+}
+
+/* rec-card: column */
+.cm-page .rec-card {
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+/* donut-card: column */
+.cm-page .donut-card {
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+/* exaust-card: column */
+.cm-page .exaust-card {
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+/* cm-card: column */
+.cm-page .cm-card {
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+/* cm-camera-card: row */
+.cm-page .cm-camera-card {
+  display: flex !important;
+  flex-direction: row !important;
+}
+
+/* cm-mental-card: row centering */
+.cm-page .cm-mental-card {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/* ── Restore component background colors (Bootstrap .card --bs-card-bg overrides) ── */
+.cm-page .exaust-card {
+  background-color: var(--c-900) !important;
+}
+.cm-page .rec-card {
+  background-color: #fff !important;
+}
+.cm-page .donut-card {
+  background-color: #fff !important;
+}
+.cm-page .cm-card {
+  background-color: var(--c-400) !important;
+}
+.cm-page .cm-camera-card {
+  background-color: var(--c-300) !important;
+}
+.cm-page .cm-mental-card {
+  background-color: var(--c-400) !important;
+}
+.cm-page .mood-bar {
+  background-color: var(--c-300) !important;
+}

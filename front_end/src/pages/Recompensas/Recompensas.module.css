@@ -1,0 +1,49 @@
+/* Recompensas.module.css */
+
+.pagina {
+  width: 90%;
+  max-width: 1040px;
+  margin: 2rem auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* ── Título badge verde escuro ── */
+.tituloBadge {
+  display: inline-block;
+  background: var(--cor-primaria-escura);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  padding: 12px 24px;
+  border-radius: 12px;
+  align-self: flex-start;
+}
+
+/* ── Grade 3 colunas de cards ── */
+.grade {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+/* ── Responsivo: 2 colunas em telas médias ── */
+@media (max-width: 768px) {
+  .grade {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+}
+
+/* ── Responsivo: 1 coluna em celular ── */
+@media (max-width: 480px) {
+  .pagina {
+    width: 95%;
+  }
+
+  .grade {
+    grid-template-columns: 1fr;
+  }
+}

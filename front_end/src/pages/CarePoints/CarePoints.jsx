@@ -5,11 +5,6 @@ import NavBar from "../../Components/NavBar/NavBar";
 import { historico, PAGE_SIZE } from "../../data/historico";
 import styles from "./CarePoints.module.css";
 
-const produtos = [
-  { nome: "ADESIVO PARA CARRO", preco: "9000", precoOld: "10.000", src: "produto1.png" },
-  { nome: "ADESIVO PARA CARRO", preco: "9000", precoOld: "10.000", src: "produto2.png" },
-];
-
 const bars = [
   { value: 820,  label: "Fev", highlight: false },
   { value: 1050, label: "Mar", highlight: false },
@@ -18,7 +13,7 @@ const bars = [
 ];
 
 const maxBarValue = Math.max(...bars.map((b) => b.value));
-const BAR_MAX_PX = 76;
+const BAR_MAX_PX = 110;
 
 function Bar({ b }) {
   const [tooltip, setTooltip] = useState(null);
@@ -89,7 +84,6 @@ function HistoricoRow({ row }) {
 }
 
 export default function CarePoints() {
-  const [filtro, setFiltro] = useState("Minhas");
   const [busca, setBusca] = useState("");
   const navigate = useNavigate();
 
@@ -124,23 +118,6 @@ export default function CarePoints() {
               </div>
             </div>
 
-            {/* Produtos */}
-            <div className={styles.produtos}>
-              {produtos.map((p, i) => (
-                <div key={i} className={styles.produtoCard}>
-                  <img
-                    src={p.src}
-                    alt={p.nome}
-                    className={styles.produtoImg}
-                  />
-                  <p className={styles.produtoNome}>{p.nome}</p>
-                  <div className={styles.produtoPrecos}>
-                    <span className={styles.produtoPreco}>{p.preco}</span>
-                    <span className={styles.produtoPrecoOld}>{p.precoOld}</span>
-                  </div>
-                </div>
-              ))}
-            </div>
           </div>
 
           {/* HISTÓRICO */}
@@ -148,20 +125,7 @@ export default function CarePoints() {
 
             {/* Header */}
             <div className={styles.historicoHeader}>
-              <div className={styles.historicoHeaderLeft}>
-                <h2 className={styles.historicoTitulo}>Histórico de CarePoints</h2>
-                <div className={styles.filtroTabs}>
-                  {["Minhas", "Tudo"].map((f) => (
-                    <button
-                      key={f}
-                      onClick={() => setFiltro(f)}
-                      className={`${styles.filtroBtn} ${filtro === f ? styles.filtroBtnAtivo : ""}`}
-                    >
-                      {f}
-                    </button>
-                  ))}
-                </div>
-              </div>
+              <h2 className={styles.historicoTitulo}>Histórico de CarePoints</h2>
 
               <div className={styles.buscaWrapper}>
                 <input

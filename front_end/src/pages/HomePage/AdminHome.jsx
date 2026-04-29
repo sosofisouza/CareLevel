@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   BarChart, Bar, LineChart, Line, RadarChart, Radar, PolarGrid,
   PolarAngleAxis, XAxis, YAxis, CartesianGrid, Tooltip, Legend,
   ResponsiveContainer
 } from "recharts";
+import { fetchAdmin } from "../../services/api";
 
 const C = {
   bg: "#e8f0ec",
@@ -15,51 +16,6 @@ const C = {
   accent: "#6fcf97",
   nav: "#fff",
 };
-
-const engTeam = [
-  { name: "TI", val: 78 },
-  { name: "RH", val: 82 },
-  { name: "Financeiro", val: 65 },
-  { name: "Marketing", val: 88 },
-  { name: "Operações", val: 70 },
-  { name: "Vendas", val: 76 },
-];
-
-const engMonth = [
-  { mes: "Jan", Financeiro: 70, Marketing: 68, Operações: 63, RH: 72, TI: 75, Vendas: 69 },
-  { mes: "Fev", Financeiro: 72, Marketing: 65, Operações: 61, RH: 74, TI: 73, Vendas: 71 },
-  { mes: "Mar", Financeiro: 74, Marketing: 70, Operações: 62, RH: 76, TI: 76, Vendas: 73 },
-  { mes: "Abr", Financeiro: 73, Marketing: 72, Operações: 64, RH: 75, TI: 77, Vendas: 72 },
-  { mes: "Mai", Financeiro: 75, Marketing: 74, Operações: 60, RH: 78, TI: 79, Vendas: 75 },
-  { mes: "Jun", Financeiro: 77, Marketing: 76, Operações: 59, RH: 80, TI: 81, Vendas: 80 },
-];
-
-const perfDept = [
-  { dept: "TI", val: 45 },
-  { dept: "RH", val: 28 },
-  { dept: "Financeiro", val: 52 },
-  { dept: "Marketing", val: 38 },
-  { dept: "Operações", val: 65 },
-  { dept: "Vendas", val: 72 },
-];
-
-const stressDept = [
-  { dept: "TI", val: 72 },
-  { dept: "RH", val: 50 },
-  { dept: "Financeiro", val: 45 },
-  { dept: "Marketing", val: 20 },
-  { dept: "Operações", val: 68 },
-  { dept: "Vendas", val: 70 },
-];
-
-const radarData = [
-  { dim: "Produtividade", Financeiro: 80, RH: 60, TI: 70 },
-  { dim: "Colaboração", Financeiro: 70, RH: 75, TI: 65 },
-  { dim: "Inovação", Financeiro: 55, RH: 50, TI: 80 },
-  { dim: "Satisfação", Financeiro: 65, RH: 70, TI: 60 },
-  { dim: "Qualidade", Financeiro: 75, RH: 65, TI: 72 },
-  { dim: "Comunicação", Financeiro: 60, RH: 80, TI: 55 },
-];
 
 const lineColors = {
   Financeiro: "#4aaf85",
@@ -139,6 +95,24 @@ function Card({ title, children, style }) {
 }
 
 export default function HRDashboard() {
+  const [admin, setAdmin] = useState(null);
+
+  useEffect(() => {
+    fetchAdmin().then(setAdmin).catch(console.error);
+  }, []);
+
+  const stats = admin?.stats ?? { totalAtivos: 0, totalDesistentes: 0, estresseGlobal: 0 };
+
+  const engTeam = (admin?.engTeam ?? []).map(d => ({ name: d.nome, val: d.engajamento }));
+  const engMonth = admin?.engMensal ?? [];
+  const perfDept = admin?.perfDept ?? [];
+  const stressDept = admin?.stressDept ?? [];
+  const radarData = (admin?.radar ?? []).map(d => ({ dim: d.dim, ...d }));
+
+  const deptKeys = engMonth.length > 0
+    ? Object.keys(engMonth[0]).filter(k => k !== 'mes')
+    : Object.keys(lineColors);
+
   return (
     <div style={{ fontFamily:"'DM Sans',sans-serif", background: C.bg, minHeight:"100vh" }}>
       <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700;800&display=swap" rel="stylesheet"/>
@@ -185,9 +159,9 @@ export default function HRDashboard() {
         </div>
 
         <div style={{ display:"flex", gap:16, flexWrap:"wrap" }}>
-          <StatCard label="Quantidade de Ativos" value="1,250"/>
-          <StatCard label="Quantidade de Desistentes" value="320"/>
-          <StatCard label="Porcentagem de Estresse Global" value="74%"/>
+          <StatCard label="Quantidade de Ativos" value={stats.totalAtivos.toLocaleString('pt-BR')}/>
+          <StatCard label="Quantidade de Desistentes" value={stats.totalDesistentes.toLocaleString('pt-BR')}/>
+          <StatCard label="Porcentagem de Estresse Global" value={`${stats.estresseGlobal}%`}/>
         </div>
 
         {/* ENG ROW */}
@@ -210,8 +184,8 @@ export default function HRDashboard() {
                 <YAxis domain={[50,100]} tick={{ fontSize:11, fill:"#fff" }}/>
                 <Tooltip/>
                 <Legend wrapperStyle={{ fontSize:11, color:"#fff" }}/>
-                {Object.keys(lineColors).map(k=>(
-                  <Line key={k} type="monotone" dataKey={k} stroke={lineColors[k]} dot={{ r:3 }} strokeWidth={2}/>
+                {deptKeys.map(k=>(
+                  <Line key={k} type="monotone" dataKey={k} stroke={lineColors[k] ?? "#ffffff"} dot={{ r:3 }} strokeWidth={2}/>
                 ))}
               </LineChart>
             </ResponsiveContainer>

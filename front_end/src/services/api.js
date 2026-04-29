@@ -40,4 +40,56 @@ export async function updateProfile(payload) {
   return data
 }
 
+// ── Dados do app ────────────────────────────────────────────────
+
+export async function fetchUsuario() {
+  const { data } = await api.get('/api/usuario')
+  return data
+}
+
+export async function fetchRanking() {
+  const { data } = await api.get('/api/ranking')
+  return data
+}
+
+export async function fetchMissoes() {
+  const { data } = await api.get('/api/missoes')
+  return data
+}
+
+export async function fetchRecompensas() {
+  const { data } = await api.get('/api/recompensas')
+  return data
+}
+
+export async function resgatarRecompensa(id) {
+  const { data } = await api.post(`/api/recompensas/resgatar/${id}`)
+  return data
+}
+
+export async function fetchCarepoints() {
+  const { data } = await api.get('/api/carepoints')
+  return data
+}
+
+export async function fetchConquistas() {
+  const { data } = await api.get('/api/conquistas')
+  return data
+}
+
+export async function salvarDestaque(destaque) {
+  const { data } = await api.patch('/api/conquistas/destaque', { destaque })
+  return data
+}
+
+export async function fetchCaremoodPerguntas() {
+  const { data } = await api.get('/api/caremood/perguntas')
+  return data
+}
+
+export async function fetchAdmin() {
+  const { data } = await api.get('/api/admin')
+  return data
+}
+
 export default api

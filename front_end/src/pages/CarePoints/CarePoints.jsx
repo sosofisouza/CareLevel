@@ -1,24 +1,17 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { createPortal } from "react-dom";
 import { useNavigate } from "react-router-dom";
 import NavBar from "../../Components/NavBar/NavBar";
-import { historico, PAGE_SIZE } from "../../data/historico";
+import { fetchCarepoints } from "../../services/api";
 import styles from "./CarePoints.module.css";
 
-const bars = [
-  { value: 820,  label: "Fev", highlight: false },
-  { value: 1050, label: "Mar", highlight: false },
-  { value: 1340, label: "Abr", highlight: false },
-  { value: 1490, label: "Mai", highlight: true  },
-];
+const PAGE_SIZE = 4;
 
-const maxBarValue = Math.max(...bars.map((b) => b.value));
-const BAR_MAX_PX = 110;
-
-function Bar({ b }) {
+function Bar({ b, maxVal }) {
   const [tooltip, setTooltip] = useState(null);
   const ref = useRef(null);
-  const heightPx = Math.round((b.value / maxBarValue) * BAR_MAX_PX);
+  const BAR_MAX_PX = 110;
+  const heightPx = Math.round((b.valor / maxVal) * BAR_MAX_PX);
 
   const handleMouseEnter = () => {
     if (ref.current) {
@@ -34,12 +27,12 @@ function Bar({ b }) {
         className={styles.bar}
         style={{
           height: `${heightPx}px`,
-          background: b.highlight ? "#53ad8b" : "#387a60",
+          background: b.destaque ? "#53ad8b" : "#387a60",
         }}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={() => setTooltip(null)}
       />
-      <span className={styles.barLabel}>{b.label}</span>
+      <span className={styles.barLabel}>{b.mes}</span>
       {tooltip &&
         createPortal(
           <div
@@ -53,7 +46,7 @@ function Bar({ b }) {
             }}
           >
             <div className={styles.barTooltip}>
-              {b.value.toLocaleString("pt-BR")} pts
+              {b.valor.toLocaleString("pt-BR")} pts
             </div>
             <div className={styles.barTooltipArrow} />
           </div>,
@@ -85,7 +78,20 @@ function HistoricoRow({ row }) {
 
 export default function CarePoints() {
   const [busca, setBusca] = useState("");
+  const [dados, setDados] = useState(null);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    fetchCarepoints().then(setDados).catch(console.error);
+  }, []);
+
+  const analise = dados?.analise ?? [];
+  const historico = dados?.historico ?? [];
+  const maxVal = analise.length > 0 ? Math.max(...analise.map((b) => b.valor)) : 1;
+
+  const historicoFiltrado = historico.filter((row) =>
+    row.atividade.toLowerCase().includes(busca.toLowerCase())
+  );
 
   return (
     <div className={styles.page}>
@@ -96,14 +102,16 @@ export default function CarePoints() {
 
           {/* TOP */}
           <div className={styles.topSection}>
-
-            {/* Card + Gráfico */}
             <div className={styles.cardGrafico}>
               {/* Esquerda */}
               <div className={styles.cardLeft}>
-                <p className={styles.cardPontos}>1.490</p>
+                <p className={styles.cardPontos}>
+                  {dados ? dados.saldo.toLocaleString("pt-BR") : "—"}
+                </p>
                 <p className={styles.cardTitulo}>CarePoints</p>
-                <p className={styles.cardValidade}>Válidos até 01/2026</p>
+                <p className={styles.cardValidade}>
+                  Válidos até {dados?.validadePoints ?? "—"}
+                </p>
                 <button className={styles.btnResgate}>RESGATE AQUI</button>
               </div>
 
@@ -111,22 +119,18 @@ export default function CarePoints() {
               <div className={styles.cardRight}>
                 <p className={styles.graficoLabel}>ANÁLISE ÚLTIMOS MESES</p>
                 <div className={styles.graficoArea}>
-                  {bars.map((b, i) => (
-                    <Bar key={i} b={b} />
+                  {analise.map((b, i) => (
+                    <Bar key={i} b={b} maxVal={maxVal} />
                   ))}
                 </div>
               </div>
             </div>
-
           </div>
 
           {/* HISTÓRICO */}
           <div className={styles.historicoSection}>
-
-            {/* Header */}
             <div className={styles.historicoHeader}>
               <h2 className={styles.historicoTitulo}>Histórico de CarePoints</h2>
-
               <div className={styles.buscaWrapper}>
                 <input
                   placeholder="Buscar..."
@@ -138,7 +142,6 @@ export default function CarePoints() {
               </div>
             </div>
 
-            {/* Tabela */}
             <div className={styles.tabelaWrapper}>
               <div className={styles.tabelaHeader}>
                 <span>Data</span>
@@ -147,14 +150,9 @@ export default function CarePoints() {
               </div>
 
               <div className={styles.tabelaLinhas}>
-                {historico
-                  .filter((row) =>
-                    row.atividade.toLowerCase().includes(busca.toLowerCase())
-                  )
-                  .slice(0, PAGE_SIZE)
-                  .map((row, i) => (
-                    <HistoricoRow key={i} row={row} />
-                  ))}
+                {historicoFiltrado.slice(0, PAGE_SIZE).map((row, i) => (
+                  <HistoricoRow key={i} row={row} />
+                ))}
               </div>
 
               {historico.length > PAGE_SIZE && (

@@ -1,42 +1,10 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { createPortal } from "react-dom";
 import NavBar from "../../Components/NavBar/NavBar";
 import ConquistaTooltip from "./ConquistaTooltip";
 import AlterarDestaqueModal from "./AlterarDestaqueModal";
+import { fetchConquistas, salvarDestaque } from "../../services/api";
 import styles from "./Conquistas.module.css";
-
-const emblemas = [
-  "Melhor corredor de 2023",
-  "Top 10 Melhores participantes do circuito Prata 2021",
-  "Top 5 corredores de 2024",
-  "Top 10 Melhores participantes do circuito Ouro 2022",
-  "Top 5 corredores de 2024",
-];
-
-const conquistas = [
-  { nome: "Platina", sub: "Percorra 5km", pct: "100%" },
-  { nome: "Platina", sub: "Percorra 5km", pct: "100%" },
-  { nome: "Platina", sub: "Percorra 5km", pct: "100%" },
-  { nome: "Platina", sub: "Percorra 5km", pct: "100%" },
-];
-
-const medalData = [
-  {
-    titulo: "Correr 5 km",
-    descricao: "Você deu os primeiros passos rumo à grandeza! Conclua uma corrida de 5km sem desistir no meio do caminho.",
-    rodape: "Alcançada por 83,2% outros colaboradores",
-  },
-  {
-    titulo: "Correr 10 km",
-    descricao: "Dobrou a aposta! Complete uma corrida de 10km e prove sua resistência.",
-    rodape: "Alcançada por 61,4% outros colaboradores",
-  },
-  {
-    titulo: "Maratonista",
-    descricao: "O desafio máximo! Complete uma maratona completa de 42km.",
-    rodape: "Alcançada por 12,7% outros colaboradores",
-  },
-];
 
 function EmblemaItem({ label }) {
   const [tooltip, setTooltip] = useState(null);
@@ -180,16 +148,42 @@ function Medal({ faded = false, tooltipData }) {
 }
 
 export default function Conquistas() {
-  const [destaque, setDestaque] = useState("MELHOR CORREDOR 2023");
+  const [dados, setDados] = useState(null);
+  const [destaque, setDestaque] = useState("");
   const [modalAberto, setModalAberto] = useState(false);
+
+  useEffect(() => {
+    fetchConquistas()
+      .then((d) => {
+        setDados(d);
+        setDestaque(d.destaqueAtual ?? "");
+      })
+      .catch(console.error);
+  }, []);
+
+  async function handleSaveDestaque(novo) {
+    const novoUpper = novo.toUpperCase();
+    setDestaque(novoUpper);
+    try {
+      await salvarDestaque(novoUpper);
+    } catch (e) {
+      console.error("Erro ao salvar destaque", e);
+    }
+  }
+
+  const emblemas = dados?.emblemas ?? [];
+  const medalhas = dados?.medalhas ?? [];
+  const detalhes = dados?.detalhes ?? [];
+  const opcoesDestaque = dados?.opcoesDestaque ?? [];
 
   return (
     <div className={styles.page}>
       {modalAberto && (
         <AlterarDestaqueModal
           atual={destaque}
+          opcoes={opcoesDestaque}
           onClose={() => setModalAberto(false)}
-          onSave={(novo) => setDestaque(novo.toUpperCase())}
+          onSave={handleSaveDestaque}
         />
       )}
 
@@ -237,14 +231,14 @@ export default function Conquistas() {
             <div className={styles.medalhasSection}>
               <p className={styles.medalhasSectionTitulo}>Alcançadas</p>
               <div className={styles.medalhasRow}>
-                {medalData.map((data, i) => (
+                {detalhes.map((data, i) => (
                   <Medal key={i} tooltipData={data} />
                 ))}
               </div>
               <hr className={styles.divider} />
               <p className={styles.medalhasSubtitulo}>Conquistas para alcançar</p>
               <div className={styles.medalhasRow}>
-                {medalData.map((data, i) => (
+                {detalhes.map((data, i) => (
                   <Medal key={i} faded tooltipData={data} />
                 ))}
               </div>
@@ -252,7 +246,7 @@ export default function Conquistas() {
 
             {/* Grid conquistas */}
             <div className={styles.conquistasGrid}>
-              {conquistas.map((c, i) => (
+              {medalhas.map((c, i) => (
                 <div key={i} className={styles.conquistaCard}>
                   <div className={styles.conquistaCardLeft}>
                     <span className={styles.conquistaStar}>★</span>
@@ -264,7 +258,7 @@ export default function Conquistas() {
                   </div>
                   <div className={styles.conquistaCardRight}>
                     <CircleProgress pct={c.pct} />
-                    <span className={styles.conquistaPct}>{c.pct}</span>
+                    <span className={styles.conquistaPct}>{c.pct}%</span>
                   </div>
                 </div>
               ))}

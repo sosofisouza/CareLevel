@@ -1,8 +1,10 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import NavBar from "../../Components/NavBar/NavBar";
-import { historico, PAGE_SIZE } from "../../data/historico";
+import { fetchCarepoints } from "../../services/api";
 import styles from "./CarePointsHistorico.module.css";
+
+const PAGE_SIZE = 4;
 
 function HistoricoRow({ row }) {
   return (
@@ -26,7 +28,14 @@ function HistoricoRow({ row }) {
 
 export default function CarePointsHistorico() {
   const [busca, setBusca] = useState("");
+  const [historico, setHistorico] = useState([]);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    fetchCarepoints()
+      .then((dados) => setHistorico(dados.historico ?? []))
+      .catch(console.error);
+  }, []);
 
   const restante = historico
     .slice(PAGE_SIZE)

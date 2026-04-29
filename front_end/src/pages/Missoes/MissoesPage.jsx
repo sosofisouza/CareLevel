@@ -1,27 +1,7 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import NavBar from '../../Components/NavBar/NavBar';
+import { fetchMissoes } from '../../services/api';
 import './MissoesPage.css';
-
-const DATA = {
-  equipe: {
-    tempo: '7 dias',
-    missoes: [
-      { id: 1, titulo: 'Ande 2km',                pontos: 10, progresso: 100 },
-      { id: 2, titulo: 'Beba 2 Litros de Água',   pontos: 15, progresso: 75  },
-      { id: 3, titulo: 'Coma 3 frutas',            pontos: 25, progresso: 33  },
-      { id: 4, titulo: 'Alongue-se por 5 minutos', pontos: 20, progresso: 0   },
-    ],
-  },
-  individual: {
-    tempo: '16 horas',
-    missoes: [
-      { id: 1, titulo: 'Ande 2km',                pontos: 15, progresso: 100 },
-      { id: 2, titulo: 'Beba 2 Litros de Água',   pontos: 10, progresso: 75  },
-      { id: 3, titulo: 'Coma 3 frutas',            pontos: 10, progresso: 75  },
-      { id: 4, titulo: 'Alongue-se por 5 minutos', pontos: 15, progresso: 75  },
-    ],
-  },
-};
 
 /* ── Circular progress SVG ── */
 function CircularProgress({ value }) {
@@ -71,7 +51,13 @@ function MissionItem({ missao }) {
 /* ── Main missions page ── */
 export default function MissoesPage() {
   const [aba, setAba] = useState('equipe');
-  const dados = DATA[aba];
+  const [missoes, setMissoes] = useState(null);
+
+  useEffect(() => {
+    fetchMissoes().then(setMissoes).catch(console.error);
+  }, []);
+
+  const dados = missoes?.[aba];
 
   return (
     <>
@@ -97,11 +83,11 @@ export default function MissoesPage() {
         <div className="missions-card">
           <div className="tempo-row">
             <span className="tempo-label">Tempo restante</span>
-            <span className="tempo-value">{dados.tempo}</span>
+            <span className="tempo-value">{dados?.tempo ?? '—'}</span>
           </div>
 
           <div className="missions-list">
-            {dados.missoes.map(m => (
+            {(dados?.itens ?? []).map(m => (
               <MissionItem key={m.id} missao={m} />
             ))}
           </div>

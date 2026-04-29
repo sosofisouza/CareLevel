@@ -1,6 +1,6 @@
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useState, useEffect } from 'react';
+import { fetchUsuario } from '../../services/api';
 
-// Contexto global de usuário — expandir conforme backend for integrado
 const UserContext = createContext(null);
 
 const DEFAULT_USER = {
@@ -14,6 +14,20 @@ const DEFAULT_USER = {
 
 export function UserProvider({ children }) {
   const [user, setUser] = useState(DEFAULT_USER);
+
+  useEffect(() => {
+    fetchUsuario()
+      .then((data) => {
+        setUser((prev) => ({
+          ...prev,
+          streak: data.streak,
+          points: data.carepoints,
+          name: data.nome,
+          avatar: data.avatar,
+        }));
+      })
+      .catch(() => {});
+  }, []);
 
   const login = (userData) => {
     setUser({ ...DEFAULT_USER, ...userData, isAuthenticated: true });
@@ -38,7 +52,6 @@ export function UserProvider({ children }) {
   );
 }
 
-// Hook utilitário
 export function useUser() {
   const context = useContext(UserContext);
   if (!context) {

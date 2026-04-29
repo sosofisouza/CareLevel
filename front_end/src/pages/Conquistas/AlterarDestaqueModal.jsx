@@ -1,13 +1,7 @@
 import { useState } from "react";
 import styles from "./AlterarDestaqueModal.module.css";
 
-const opcoes = [
-  { grupo: null, items: ["Sem Título"] },
-  { grupo: "Apenas 1%", items: ["Melhor corredor de 2023", "Top 10 melhores participantes de 2024"] },
-  { grupo: "Apenas 20%", items: ["Participante da campanha agasalho SP"] },
-];
-
-export default function AlterarDestaqueModal({ atual, onClose, onSave }) {
+export default function AlterarDestaqueModal({ atual, opcoes = [], onClose, onSave }) {
   const [selecionado, setSelecionado] = useState(atual || "Sem Título");
 
   function handleSave() {
@@ -21,13 +15,13 @@ export default function AlterarDestaqueModal({ atual, onClose, onSave }) {
         <h2 className={styles.titulo}>Alterar destaque</h2>
 
         <div className={styles.opcoesList}>
-          {opcoes.map(({ grupo, items }) => (
+          {opcoes.map(({ grupo, itens }) => (
             <div key={grupo ?? "sem-grupo"}>
               {grupo && (
                 <p className={styles.grupoLabel}>{grupo}</p>
               )}
               <div className={styles.itemsRow}>
-                {items.map((item) => {
+                {(itens ?? []).map((item) => {
                   const ativo = selecionado === item;
                   return (
                     <button

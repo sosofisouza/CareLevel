@@ -1,4 +1,4 @@
-import data from '../data/ranking.json'
+import { fetchRanking } from '../../../services/api'
 
 const formatadores = {
   pontos: v => v.toLocaleString('pt-BR'),
@@ -9,17 +9,23 @@ const formatadores = {
 
 const MEDALHAS = ['🥇', '🥈', '🥉']
 
+const CHAVE_MAP = {
+  pontos: 'carepoints',
+  nivel:  'nivel',
+  streak: 'streak',
+}
+
 export async function getRanking(aba = 'nivel', usuarioId = null) {
+  const { usuarios, equipes } = await fetchRanking()
   const fmt = formatadores[aba] ?? formatadores.pontos
 
-  
   if (aba === 'equipe') {
-    const ordenadas = [...data.equipes].sort((a, b) => b.pontos - a.pontos)
+    const ordenadas = [...equipes].sort((a, b) => b.carepoints - a.carepoints)
 
     const top3 = ordenadas.slice(0, 3).map((eq, i) => ({
       equipeId: eq.equipeId,
       nome:     eq.nome,
-      valor:    fmt(eq.pontos),
+      valor:    fmt(eq.carepoints),
       medalha:  MEDALHAS[i],
       posicao:  i + 1,
       avatar:   'emoji',
@@ -30,27 +36,26 @@ export async function getRanking(aba = 'nivel', usuarioId = null) {
       pos:      i + 4,
       equipeId: eq.equipeId,
       nome:     eq.nome,
-      valor:    fmt(eq.pontos),
+      valor:    fmt(eq.carepoints),
     }))
 
-    const usuario     = data.usuarios.find(u => u.userId === usuarioId)
+    const usuario     = usuarios.find(u => u.userId === usuarioId)
     const minhaEquipe = usuario ? ordenadas.find(eq => eq.equipeId === usuario.equipeId) : null
     const posEquipe   = minhaEquipe ? ordenadas.indexOf(minhaEquipe) + 1 : null
-    const equipeInfo  = data.equipes.find(eq => eq.equipeId === usuario?.equipeId)
+    const equipeInfo  = equipes.find(eq => eq.equipeId === usuario?.equipeId)
 
     const voce = minhaEquipe ? {
       pos:   posEquipe,
       nome:  `Sua Equipe (${equipeInfo?.nome ?? '—'})`,
-      valor: fmt(minhaEquipe.pontos),
+      valor: fmt(minhaEquipe.carepoints),
     } : null
 
     return { podio: top3, lista, voce }
   }
 
-  
-  const chave = aba === 'pontos' ? 'pontos' : aba === 'nivel' ? 'nivel' : 'streak'
+  const chave = CHAVE_MAP[aba] ?? 'carepoints'
 
-  const todosOrdenados = [...data.usuarios].sort((a, b) => b[chave] - a[chave])
+  const todosOrdenados = [...usuarios].sort((a, b) => b[chave] - a[chave])
   const semEuOrdenados = todosOrdenados.filter(u => u.userId !== usuarioId)
 
   const top3 = semEuOrdenados.slice(0, 3).map((u, i) => ({
@@ -71,7 +76,7 @@ export async function getRanking(aba = 'nivel', usuarioId = null) {
   }))
 
   const posEu = todosOrdenados.findIndex(u => u.userId === usuarioId) + 1
-  const eu    = data.usuarios.find(u => u.userId === usuarioId)
+  const eu    = usuarios.find(u => u.userId === usuarioId)
 
   const voce = eu ? {
     pos:    posEu || todosOrdenados.length,

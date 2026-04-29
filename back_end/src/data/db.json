@@ -302,7 +302,7 @@
       "id": 1,
       "nome": "Ingressos para cinema",
       "custo": 500,
-      "imagem": "https://images.unsplash.com/photo-1570360519836-b4a1aa51e419?w=400&h=300&fit=crop"
+      "imagem": "cinema.jpg"
     },
     {
       "id": 2,

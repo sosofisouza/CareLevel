@@ -3,6 +3,7 @@ import { createPortal } from "react-dom";
 import { useNavigate } from "react-router-dom";
 import NavBar from "../../Components/NavBar/NavBar";
 import { fetchCarepoints } from "../../services/api";
+import { useUser } from "../../Components/UserContext/UserContext";
 import styles from "./CarePoints.module.css";
 
 const PAGE_SIZE = 4;
@@ -80,6 +81,7 @@ export default function CarePoints() {
   const [busca, setBusca] = useState("");
   const [dados, setDados] = useState(null);
   const navigate = useNavigate();
+  const { user } = useUser();
 
   useEffect(() => {
     fetchCarepoints().then(setDados).catch(console.error);
@@ -106,7 +108,7 @@ export default function CarePoints() {
               {/* Esquerda */}
               <div className={styles.cardLeft}>
                 <p className={styles.cardPontos}>
-                  {dados ? dados.saldo.toLocaleString("pt-BR") : "—"}
+                  {user.points.toLocaleString("pt-BR")}
                 </p>
                 <p className={styles.cardTitulo}>CarePoints</p>
                 <p className={styles.cardValidade}>

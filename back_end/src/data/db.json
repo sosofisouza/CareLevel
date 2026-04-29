@@ -6,8 +6,8 @@
     "equipeId": "eq_009",
     "nivel": 10,
     "streak": 5,
-    "carepoints": 990,
-    "validadePoints": "01/2026",
+    "carepoints": 1490,
+    "validadePoints": "01/2027",
     "rankingAtivo": true,
     "avatar": "https://i.pravatar.cc/200?img=68"
   },
@@ -81,7 +81,7 @@
       "nome": "Você",
       "nivel": 10,
       "streak": 5,
-      "carepoints": 990,
+      "carepoints": 1490,
       "equipeId": "eq_009"
     }
   ],
@@ -142,94 +142,29 @@
     }
   ],
   "historico": [
-    {
-      "id": 9,
-      "data": "28/04/2026",
-      "atividade": "RESGATE: INGRESSOS PARA CINEMA",
-      "pontos": -500,
-      "tipo": "debito"
-    },
-    {
-      "id": 1,
-      "data": "01/01/2025",
-      "atividade": "MISSÃO DIÁRIA: BEBER AGUA",
-      "pontos": 10,
-      "tipo": "credito"
-    },
-    {
-      "id": 2,
-      "data": "01/01/2025",
-      "atividade": "RESGATE: INGRESSO DE CINEMA",
-      "pontos": -500,
-      "tipo": "debito"
-    },
-    {
-      "id": 3,
-      "data": "01/01/2025",
-      "atividade": "SUBIR AS ESCADAS EM VEZ DE PEGAR OS ELEVADORES",
-      "pontos": 10000,
-      "tipo": "badge"
-    },
-    {
-      "id": 4,
-      "data": "01/01/2025",
-      "atividade": "MISSÃO DIÁRIA: BEBER AGUA",
-      "pontos": 10000,
-      "tipo": "badge"
-    },
-    {
-      "id": 5,
-      "data": "02/01/2025",
-      "atividade": "MISSÃO SEMANAL: MEDITAÇÃO",
-      "pontos": 500,
-      "tipo": "credito"
-    },
-    {
-      "id": 6,
-      "data": "02/01/2025",
-      "atividade": "RESGATE: DESCONTO FARMÁCIA",
-      "pontos": -200,
-      "tipo": "debito"
-    },
-    {
-      "id": 7,
-      "data": "03/01/2025",
-      "atividade": "MISSÃO DIÁRIA: DORMIR 8H",
-      "pontos": 50,
-      "tipo": "credito"
-    },
-    {
-      "id": 8,
-      "data": "03/01/2025",
-      "atividade": "CONQUISTA: 7 DIAS SEGUIDOS",
-      "pontos": 2000,
-      "tipo": "badge"
-    }
+    { "id": 14, "data": "28/04/2026", "atividade": "MISSÃO DIÁRIA: BEBER 2L DE ÁGUA",            "pontos":    15, "tipo": "credito" },
+    { "id": 13, "data": "27/04/2026", "atividade": "MISSÃO DIÁRIA: ANDAR 2KM",                   "pontos":    20, "tipo": "credito" },
+    { "id": 12, "data": "26/04/2026", "atividade": "MISSÃO DIÁRIA: DORMIR 8H",                   "pontos":    15, "tipo": "credito" },
+    { "id": 11, "data": "25/04/2026", "atividade": "MISSÃO DIÁRIA: COMER 3 FRUTAS",              "pontos":    25, "tipo": "credito" },
+    { "id": 10, "data": "24/04/2026", "atividade": "MISSÃO DIÁRIA: ALONGAR POR 5 MINUTOS",      "pontos":    20, "tipo": "credito" },
+    { "id": 9,  "data": "21/04/2026", "atividade": "RESGATE: SNACKS SAUDÁVEIS",                  "pontos":  -300, "tipo": "debito"  },
+    { "id": 8,  "data": "21/04/2026", "atividade": "DESAFIO: SEMANA SEM ESTRESSE",               "pontos":   200, "tipo": "badge"   },
+    { "id": 7,  "data": "14/04/2026", "atividade": "MISSÃO SEMANAL: HIDRATAÇÃO COMPLETA",        "pontos":    35, "tipo": "credito" },
+    { "id": 6,  "data": "07/04/2026", "atividade": "MISSÃO SEMANAL: MEDITAÇÃO DIÁRIA",           "pontos":   150, "tipo": "credito" },
+    { "id": 5,  "data": "05/04/2026", "atividade": "RESGATE: VALE-REFEIÇÃO",                     "pontos":  -400, "tipo": "debito"  },
+    { "id": 4,  "data": "01/04/2026", "atividade": "MISSÃO SEMANAL: 10.000 PASSOS EM 3 DIAS",   "pontos":   200, "tipo": "credito" },
+    { "id": 3,  "data": "31/03/2026", "atividade": "CONQUISTA: 7 DIAS SEGUIDOS DE ATIVIDADE",   "pontos":   500, "tipo": "badge"   },
+    { "id": 2,  "data": "28/03/2026", "atividade": "PAUSA ATIVA NO TRABALHO",                    "pontos":    10, "tipo": "credito" },
+    { "id": 1,  "data": "01/03/2026", "atividade": "MISSÃO MENSAL: PARTICIPAÇÃO INTEGRAL",       "pontos":  1000, "tipo": "badge"   }
   ],
   "carepoints": {
-    "saldo": 990,
-    "validadePoints": "01/2026",
+    "saldo": 1490,
+    "validadePoints": "01/2027",
     "analise": [
-      {
-        "mes": "Fev",
-        "valor": 820,
-        "destaque": false
-      },
-      {
-        "mes": "Mar",
-        "valor": 1050,
-        "destaque": false
-      },
-      {
-        "mes": "Abr",
-        "valor": 1340,
-        "destaque": false
-      },
-      {
-        "mes": "Mai",
-        "valor": 1490,
-        "destaque": true
-      }
+      { "mes": "Jan", "valor":  320, "destaque": false },
+      { "mes": "Fev", "valor":  680, "destaque": false },
+      { "mes": "Mar", "valor": 1010, "destaque": false },
+      { "mes": "Abr", "valor": 1490, "destaque": true  }
     ]
   },
   "missoes": {

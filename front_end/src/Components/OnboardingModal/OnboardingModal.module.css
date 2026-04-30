@@ -1,0 +1,133 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  padding: 16px;
+}
+
+.modal {
+  background: #5bbf99;
+  border-radius: 28px;
+  width: 100%;
+  max-width: 520px;
+  padding: 28px 24px 22px;
+  gap: 18px;
+  font-family: 'Nunito', sans-serif;
+}
+
+.titlePill {
+  background: #236b52;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  padding: 12px 32px;
+  border-radius: 20px;
+  text-align: center;
+  width: fit-content;
+  max-width: 90%;
+}
+
+.card {
+  background: #e5f5ee;
+  border-radius: 18px;
+  padding: 22px 20px;
+  gap: 6px;
+}
+
+.greeting {
+  font-size: 17px;
+  font-weight: 700;
+  color: #555;
+  margin: 0 0 4px;
+}
+
+.sectionTitle {
+  font-size: 17px;
+  font-weight: 700;
+  color: #555;
+  margin: 0 0 4px;
+}
+
+.text {
+  font-size: 15px;
+  color: #666;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.featureList {
+  list-style: none;
+  padding: 0;
+  margin: 12px 0 0;
+  gap: 10px;
+}
+
+.featureItem {
+  font-size: 15px;
+  color: #555;
+  line-height: 1.4;
+  gap: 10px;
+}
+
+.featureIcon {
+  color: #3d9a72;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.bulletList {
+  list-style: disc;
+  padding-left: 22px;
+  margin: 4px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.bulletList li {
+  font-size: 15px;
+  color: #666;
+  line-height: 1.4;
+}
+
+.footer {
+  gap: 12px;
+}
+
+.btnPrimary {
+  background: #236b52;
+  color: #fff;
+  font-family: 'Nunito', sans-serif;
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: 0.07em;
+  padding: 12px 36px;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.btnPrimary:hover {
+  background: #1a5240;
+}
+
+.btnSecondary {
+  background: #a0d4bc;
+  color: #2e7a5e;
+  font-family: 'Nunito', sans-serif;
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: 0.07em;
+  padding: 12px 36px;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.btnSecondary:hover {
+  background: #8ec9b0;
+}

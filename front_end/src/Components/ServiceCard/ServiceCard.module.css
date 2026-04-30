@@ -1,0 +1,41 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  background: #4ab87a;
+  border-radius: var(--radius-lg);
+  padding: 32px 20px 28px;
+  cursor: pointer;
+  border: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  max-height: 200px;
+}
+
+.card:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 12px 32px rgba(46, 139, 87, 0.3);
+  background: #3aab6d;
+}
+
+.card:active {
+  transform: translateY(-1px) scale(0.99);
+}
+
+.iconWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.label {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  color: white;
+  text-align: center;
+  letter-spacing: 0.2px;
+}

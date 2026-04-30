@@ -1,0 +1,518 @@
+/* =====================================================
+   CarePoints.module.css — mobile-first
+   Breakpoints: 500px | 640px | 900px
+   ===================================================== */
+
+/* ===== BASE ===== */
+.page {
+  background: #dff0ea;
+  min-height: 100vh;
+  font-family: 'Nunito', sans-serif;
+  padding-bottom: 40px;
+}
+
+/* ===== LAYOUT ===== */
+.main {
+  padding: 20px 12px;
+  display: flex;
+  justify-content: center;
+}
+
+@media (min-width: 640px) {
+  .main {
+    padding: 32px 16px;
+  }
+}
+
+.container {
+  width: 100%;
+  max-width: 850px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+@media (min-width: 640px) {
+  .container {
+    gap: 40px;
+  }
+}
+
+/* ===== TOP SECTION ===== */
+.topSection {
+  display: flex;
+  justify-content: center;
+}
+
+/* ===== CARD + GRÁFICO ===== */
+
+.cardGrafico {
+  display: flex;
+  flex-direction: column;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  width: 100%;
+  max-width: 620px;
+}
+
+@media (min-width: 500px) {
+  .cardGrafico {
+    flex-direction: row;
+    border-radius: 35px;
+    height: 260px;
+  }
+}
+
+/* --- Lado esquerdo (pontos) --- */
+.cardLeft {
+  background: #5bbf99;
+  padding: 20px 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+}
+
+@media (min-width: 500px) {
+  .cardLeft {
+    width: 50%;
+    padding: 24px;
+  }
+}
+
+.cardPontos {
+  font-size: 36px;
+  font-weight: 900;
+  color: white;
+  margin: 0;
+  line-height: 1;
+}
+
+@media (min-width: 500px) {
+  .cardPontos {
+    font-size: 52px;
+  }
+}
+
+.cardTitulo {
+  font-size: 18px;
+  font-weight: 700;
+  color: white;
+  line-height: 1.2;
+  margin: 0;
+}
+
+@media (min-width: 500px) {
+  .cardTitulo {
+    font-size: 26px;
+  }
+}
+
+.cardValidade {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0;
+}
+
+.btnResgate {
+  background: #4aab85;
+  color: white;
+  border: none;
+  padding: 10px 22px;
+  border-radius: 9999px;
+  font-size: 10px;
+  font-weight: 900;
+  margin-top: 12px;
+  cursor: pointer;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: filter 0.15s;
+  font-family: inherit;
+  min-height: 36px;
+}
+
+.btnResgate:hover {
+  filter: brightness(0.95);
+}
+
+/* --- Lado direito (gráfico) --- */
+.cardRight {
+  background: #2e7a5e;
+  width: 100%;
+  padding: 16px 16px 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 500px) {
+  .cardRight {
+    width: 50%;
+    padding: 16px;
+  }
+}
+
+.graficoLabel {
+  font-size: 11px;
+  color: #c8f0e0;
+  text-align: center;
+  font-weight: 700;
+  margin-bottom: 12px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.graficoArea {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
+  flex: 1;
+  padding: 0 4px;
+  min-height: 130px;
+}
+
+@media (min-width: 500px) {
+  .graficoArea {
+    padding: 0 8px;
+    min-height: unset;
+  }
+}
+
+/* ===== BARRA DO GRÁFICO ===== */
+.barWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.bar {
+  width: 20px;
+  border-radius: 4px 4px 0 0;
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+
+@media (min-width: 500px) {
+  .bar {
+    width: 28px;
+  }
+}
+
+.bar:hover {
+  opacity: 0.8;
+}
+
+.barLabel {
+  font-size: 9px;
+  color: #c8f0e0;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+@media (min-width: 500px) {
+  .barLabel {
+    font-size: 10px;
+  }
+}
+
+.barTooltip {
+  background: #2e7a5e;
+  border-radius: 8px;
+  padding: 4px 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  font-size: 10px;
+  font-weight: 700;
+  color: white;
+  white-space: nowrap;
+}
+
+.barTooltipArrow {
+  margin: 0 auto;
+  width: 8px;
+  height: 8px;
+  background: #2e7a5e;
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+}
+
+/* ===== HISTÓRICO SECTION ===== */
+.historicoSection {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.historicoHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+@media (min-width: 640px) {
+  .historicoHeader {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.historicoTitulo {
+  font-size: 18px;
+  font-weight: 900;
+  color: #2e7a5e;
+  margin: 0;
+}
+
+@media (min-width: 640px) {
+  .historicoTitulo {
+    font-size: 20px;
+  }
+}
+
+/* ===== BUSCA ===== */
+.buscaWrapper {
+  position: relative;
+  width: 100%;
+}
+
+@media (min-width: 640px) {
+  .buscaWrapper {
+    width: 256px;
+  }
+}
+
+.buscaInput {
+  background: #5bbf99;
+  border-radius: 9999px;
+  padding: 8px 40px 8px 16px;
+  font-size: 12px;
+  color: #2e7a5e;
+  width: 100%;
+  border: none;
+  outline: none;
+  font-family: inherit;
+  box-sizing: border-box;
+  min-height: 36px;
+}
+
+.buscaInput::placeholder {
+  color: rgba(46, 122, 94, 0.6);
+}
+
+.buscaIcon {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #2e7a5e;
+  pointer-events: none;
+  line-height: 1;
+}
+
+/* ===== TABELA ===== */
+.tabelaWrapper {
+  background: #5bbf99;
+  border-radius: 28px;
+  padding: 16px;
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+@media (min-width: 500px) {
+  .tabelaWrapper {
+    border-radius: 40px;
+    padding: 24px;
+  }
+}
+
+.tabelaHeader {
+  display: none;
+  grid-template-columns: 100px 1fr 110px;
+  padding: 0 16px;
+  margin-bottom: 8px;
+  color: #2e7a5e;
+  font-weight: 700;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+@media (min-width: 640px) {
+  .tabelaHeader {
+    display: grid;
+    grid-template-columns: 120px 1fr 120px;
+    padding: 0 24px;
+  }
+}
+
+.tabelaHeaderRight {
+  text-align: right;
+}
+
+.tabelaLinhas {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* ===== LINHA DO HISTÓRICO ===== */
+.historicoRow {
+  border-radius: 9999px;
+  padding: 10px 14px;
+  display: grid;
+  grid-template-columns: 80px 1fr 80px;
+  align-items: center;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  min-width: 0;
+}
+
+@media (min-width: 500px) {
+  .historicoRow {
+    padding: 10px 20px;
+    grid-template-columns: 100px 1fr 100px;
+  }
+}
+
+@media (min-width: 640px) {
+  .historicoRow {
+    padding: 10px 24px;
+    grid-template-columns: 120px 1fr 120px;
+  }
+}
+
+.historicoDate {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  min-width: 0;
+}
+
+@media (min-width: 500px) {
+  .historicoDate {
+    gap: 8px;
+  }
+}
+
+.historicoIcon {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 9px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+@media (min-width: 500px) {
+  .historicoIcon {
+    width: 20px;
+    height: 20px;
+    font-size: 10px;
+  }
+}
+
+.historicoDateText {
+  font-size: 9px;
+  color: white;
+  font-weight: 700;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@media (min-width: 500px) {
+  .historicoDateText {
+    font-size: 10px;
+  }
+}
+
+.historicoAtividade {
+  font-size: 9px;
+  color: white;
+  font-weight: 700;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding-right: 8px;
+  min-width: 0;
+}
+
+@media (min-width: 500px) {
+  .historicoAtividade {
+    font-size: 10px;
+    padding-right: 14px;
+  }
+}
+
+@media (min-width: 640px) {
+  .historicoAtividade {
+    padding-right: 16px;
+  }
+}
+
+.historicoPontosWrapper {
+  text-align: right;
+  min-width: 0;
+}
+
+.historicoPontos {
+  background: #2e7a5e;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 9999px;
+  font-size: 9px;
+  font-weight: 900;
+  display: inline-block;
+  min-width: 54px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+@media (min-width: 500px) {
+  .historicoPontos {
+    padding: 4px 12px;
+    font-size: 10px;
+    min-width: 62px;
+  }
+}
+
+@media (min-width: 640px) {
+  .historicoPontos {
+    padding: 4px 16px;
+    font-size: 11px;
+    min-width: 70px;
+  }
+}
+
+/* ===== VER MAIS ===== */
+.verMaisWrapper {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 16px;
+}
+
+.btnVerMais {
+  background: #2e7a5e;
+  color: white;
+  padding: 8px 24px;
+  border-radius: 9999px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  transition: filter 0.15s;
+  min-height: 36px;
+}
+
+.btnVerMais:hover {
+  filter: brightness(1.1);
+}

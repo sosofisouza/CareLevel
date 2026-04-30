@@ -77,6 +77,22 @@
       "equipeId": "eq_006"
     },
     {
+      "userId": "usr_009",
+      "nome": "Felipe Duarte",
+      "nivel": 8,
+      "streak": 18,
+      "carepoints": 890,
+      "equipeId": "eq_007"
+    },
+    {
+      "userId": "usr_010",
+      "nome": "Carla Nunes",
+      "nivel": 6,
+      "streak": 14,
+      "carepoints": 620,
+      "equipeId": "eq_008"
+    },
+    {
       "userId": "usr_logado",
       "nome": "Você",
       "nivel": 10,
@@ -175,9 +191,38 @@
       "itens": [
         {
           "id": 1,
+          "titulo": "Hidratação Completa",
+          "pontos": 35,
+          "progresso": 57
+        },
+        {
+          "id": 2,
+          "titulo": "Meditação Diária",
+          "pontos": 150,
+          "progresso": 43
+        },
+        {
+          "id": 3,
+          "titulo": "Acumule 10.000 Passos",
+          "pontos": 200,
+          "progresso": 67
+        },
+        {
+          "id": 4,
+          "titulo": "Alimentação Saudável",
+          "pontos": 300,
+          "progresso": 43
+        }
+      ]
+    },
+    "individual": {
+      "tempo": "16 horas",
+      "itens": [
+        {
+          "id": 1,
           "titulo": "Ande 2km",
-          "pontos": 10,
-          "progresso": 100
+          "pontos": 20,
+          "progresso": 40
         },
         {
           "id": 2,
@@ -193,88 +238,59 @@
         },
         {
           "id": 4,
-          "titulo": "Alongue-se por 5 minutos",
-          "pontos": 20,
-          "progresso": 0
-        }
-      ]
-    },
-    "individual": {
-      "tempo": "16 horas",
-      "itens": [
-        {
-          "id": 1,
-          "titulo": "Ande 2km",
+          "titulo": "Durma 8 horas",
           "pontos": 15,
           "progresso": 100
-        },
-        {
-          "id": 2,
-          "titulo": "Beba 2 Litros de Água",
-          "pontos": 10,
-          "progresso": 75
-        },
-        {
-          "id": 3,
-          "titulo": "Coma 3 frutas",
-          "pontos": 10,
-          "progresso": 75
-        },
-        {
-          "id": 4,
-          "titulo": "Alongue-se por 5 minutos",
-          "pontos": 15,
-          "progresso": 75
         }
       ]
     }
   },
   "conquistas": {
-    "destaqueAtual": "MELHOR CORREDOR 2023",
+    "destaqueAtual": "7 DIAS SEGUIDOS DE ATIVIDADE",
     "emblemas": [
-      "Melhor corredor de 2023",
-      "Top 10 Melhores participantes do circuito Prata 2021",
-      "Top 5 corredores de 2024",
-      "Top 10 Melhores participantes do circuito Ouro 2022",
-      "Top 5 corredores de 2024"
+      "Primeira Semana Perfeita",
+      "7 Dias Seguidos de Atividade",
+      "Desafio: Semana Sem Estresse",
+      "Mestre da Hidratação",
+      "Nível 10 Desbloqueado"
     ],
     "medalhas": [
       {
-        "nome": "Platina",
-        "sub": "Percorra 5km",
+        "nome": "Hidratação",
+        "sub": "Beba 2L por 7 dias",
         "pct": 100
       },
       {
-        "nome": "Platina",
-        "sub": "Percorra 5km",
-        "pct": 100
+        "nome": "Corpo em Movimento",
+        "sub": "Ande 2km por 5 dias",
+        "pct": 80
       },
       {
-        "nome": "Platina",
-        "sub": "Percorra 5km",
-        "pct": 100
+        "nome": "Alimentação",
+        "sub": "3 missões de nutrição",
+        "pct": 67
       },
       {
-        "nome": "Platina",
-        "sub": "Percorra 5km",
-        "pct": 100
+        "nome": "Mente Tranquila",
+        "sub": "Complete meditação semanal",
+        "pct": 43
       }
     ],
     "detalhes": [
       {
-        "titulo": "Correr 5 km",
-        "descricao": "Você deu os primeiros passos rumo à grandeza! Conclua uma corrida de 5km sem desistir no meio do caminho.",
-        "rodape": "Alcançada por 83,2% outros colaboradores"
+        "titulo": "Primeira Semana Perfeita",
+        "descricao": "Você completou todas as missões diárias por 7 dias seguidos. Um começo incrível!",
+        "rodape": "Alcançada por 34,5% dos colaboradores"
       },
       {
-        "titulo": "Correr 10 km",
-        "descricao": "Dobrou a aposta! Complete uma corrida de 10km e prove sua resistência.",
-        "rodape": "Alcançada por 61,4% outros colaboradores"
+        "titulo": "7 Dias Seguidos de Atividade",
+        "descricao": "Mantenha uma sequência de 7 dias praticando atividades físicas sem interrupção.",
+        "rodape": "Alcançada por 28,1% dos colaboradores"
       },
       {
-        "titulo": "Maratonista",
-        "descricao": "O desafio máximo! Complete uma maratona completa de 42km.",
-        "rodape": "Alcançada por 12,7% outros colaboradores"
+        "titulo": "Campeão do Bem-Estar",
+        "descricao": "Alcance o nível 15 e demonstre comprometimento duradouro com a sua saúde.",
+        "rodape": "Alcançada por 19,3% dos colaboradores"
       }
     ],
     "opcoesDestaque": [
@@ -285,16 +301,18 @@
         ]
       },
       {
-        "grupo": "Apenas 1%",
+        "grupo": "Conquistados",
         "itens": [
-          "Melhor corredor de 2023",
-          "Top 10 melhores participantes de 2024"
+          "Primeira Semana Perfeita",
+          "7 Dias Seguidos de Atividade",
+          "Desafio: Semana Sem Estresse"
         ]
       },
       {
-        "grupo": "Apenas 20%",
+        "grupo": "Destaques de Nível",
         "itens": [
-          "Participante da campanha agasalho SP"
+          "Nível 10 Desbloqueado",
+          "Mestre da Hidratação"
         ]
       }
     ]

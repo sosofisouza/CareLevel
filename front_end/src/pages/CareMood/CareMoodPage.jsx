@@ -33,7 +33,7 @@ export default function CareMoodPage() {
         <main className="page cm-page">
           <div className="top-row">
             <RecommendationsCard todayResult={todayResult} />
-            <CareMoodColumn onQuestionario={() => setPagina('quiz')} />
+            <CareMoodColumn onQuestionario={() => setPagina('quiz')} jaRespondeuHoje={!!todayResult} />
           </div>
 
           <MoodBoard weekData={weekData} />

@@ -8,6 +8,7 @@ const DEFAULT_USER = {
   name: 'Visitante',
   streak: 5,
   points: 1490,
+  nivel: null,
   avatar: null,
   isAuthenticated: false,
 };
@@ -22,6 +23,7 @@ export function UserProvider({ children }) {
           ...prev,
           streak: data.streak,
           points: data.carepoints,
+          nivel: data.nivel,
           name: data.nome,
           avatar: data.avatar,
         }));

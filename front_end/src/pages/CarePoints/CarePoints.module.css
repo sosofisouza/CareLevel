@@ -5,7 +5,7 @@
 
 /* ===== BASE ===== */
 .page {
-  background: #e6f4f0;
+  background: #dff0ea;
   min-height: 100vh;
   font-family: 'Nunito', sans-serif;
   padding-bottom: 40px;
@@ -46,7 +46,6 @@
 
 /* ===== CARD + GRÁFICO ===== */
 
-/* Mobile: empilha pontos acima, gráfico abaixo */
 .cardGrafico {
   display: flex;
   flex-direction: column;
@@ -57,7 +56,6 @@
   max-width: 620px;
 }
 
-/* 500px+: layout lado a lado com altura fixa */
 @media (min-width: 500px) {
   .cardGrafico {
     flex-direction: row;
@@ -68,7 +66,7 @@
 
 /* --- Lado esquerdo (pontos) --- */
 .cardLeft {
-  background: #93d3bc;
+  background: #5bbf99;
   padding: 20px 16px;
   display: flex;
   flex-direction: column;
@@ -119,9 +117,8 @@
   margin: 0;
 }
 
-/* Botão com área de toque mínima de 44px em mobile */
 .btnResgate {
-  background: #53ad8b;
+  background: #4aab85;
   color: white;
   border: none;
   padding: 10px 22px;
@@ -143,12 +140,11 @@
 
 /* --- Lado direito (gráfico) --- */
 .cardRight {
-  background: #1a4d3a;
+  background: #2e7a5e;
   width: 100%;
   padding: 16px 16px 20px;
   display: flex;
   flex-direction: column;
-  /* sem height fixo no mobile: expande para conter as barras */
 }
 
 @media (min-width: 500px) {
@@ -160,7 +156,7 @@
 
 .graficoLabel {
   font-size: 11px;
-  color: #93d3bc;
+  color: #c8f0e0;
   text-align: center;
   font-weight: 700;
   margin-bottom: 12px;
@@ -174,7 +170,6 @@
   justify-content: space-around;
   flex: 1;
   padding: 0 4px;
-  /* altura mínima garante que as barras sejam visíveis no mobile */
   min-height: 130px;
 }
 
@@ -212,7 +207,7 @@
 
 .barLabel {
   font-size: 9px;
-  color: #93d3bc;
+  color: #c8f0e0;
   text-transform: uppercase;
   font-weight: 700;
 }
@@ -224,7 +219,7 @@
 }
 
 .barTooltip {
-  background: #1a4d3a;
+  background: #2e7a5e;
   border-radius: 8px;
   padding: 4px 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
@@ -238,7 +233,7 @@
   margin: 0 auto;
   width: 8px;
   height: 8px;
-  background: #1a4d3a;
+  background: #2e7a5e;
   clip-path: polygon(0 0, 100% 0, 50% 100%);
 }
 
@@ -249,7 +244,6 @@
   gap: 16px;
 }
 
-/* Mobile: título e busca empilhados */
 .historicoHeader {
   display: flex;
   flex-direction: column;
@@ -267,7 +261,7 @@
 .historicoTitulo {
   font-size: 18px;
   font-weight: 900;
-  color: #1a4d3a;
+  color: #2e7a5e;
   margin: 0;
 }
 
@@ -290,12 +284,11 @@
 }
 
 .buscaInput {
-  background: #93d3bc;
+  background: #5bbf99;
   border-radius: 9999px;
-  /* padding-right largo deixa espaço para o ícone */
   padding: 8px 40px 8px 16px;
   font-size: 12px;
-  color: #1a4d3a;
+  color: #2e7a5e;
   width: 100%;
   border: none;
   outline: none;
@@ -305,27 +298,25 @@
 }
 
 .buscaInput::placeholder {
-  color: rgba(26, 77, 58, 0.6);
+  color: rgba(46, 122, 94, 0.6);
 }
 
-/* Ícone centralizado verticalmente */
 .buscaIcon {
   position: absolute;
   right: 14px;
   top: 50%;
   transform: translateY(-50%);
-  color: #1a4d3a;
+  color: #2e7a5e;
   pointer-events: none;
   line-height: 1;
 }
 
 /* ===== TABELA ===== */
 .tabelaWrapper {
-  background: #93d3bc;
+  background: #5bbf99;
   border-radius: 28px;
   padding: 16px;
   box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.1);
-  /* previne que conteúdo interno quebre o layout */
   overflow: hidden;
 }
 
@@ -336,13 +327,12 @@
   }
 }
 
-/* Cabeçalho oculto no mobile; visível em telas ≥ 640px */
 .tabelaHeader {
   display: none;
   grid-template-columns: 100px 1fr 110px;
   padding: 0 16px;
   margin-bottom: 8px;
-  color: #1a4d3a;
+  color: #2e7a5e;
   font-weight: 700;
   font-size: 11px;
   text-transform: uppercase;
@@ -368,8 +358,6 @@
 }
 
 /* ===== LINHA DO HISTÓRICO ===== */
-
-/* Colunas menores no mobile para caber em 320px+ sem overflow */
 .historicoRow {
   border-radius: 9999px;
   padding: 10px 14px;
@@ -377,7 +365,6 @@
   grid-template-columns: 80px 1fr 80px;
   align-items: center;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
-  /* impede que o texto vaze para fora do card */
   min-width: 0;
 }
 
@@ -434,7 +421,6 @@
   font-size: 9px;
   color: white;
   font-weight: 700;
-  /* impede overflow na coluna de data */
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -476,7 +462,7 @@
 }
 
 .historicoPontos {
-  background: #1a4d3a;
+  background: #2e7a5e;
   color: white;
   padding: 4px 8px;
   border-radius: 9999px;
@@ -485,7 +471,6 @@
   display: inline-block;
   min-width: 54px;
   text-align: center;
-  /* evita que o badge quebre o layout */
   white-space: nowrap;
 }
 
@@ -513,7 +498,7 @@
 }
 
 .btnVerMais {
-  background: #1a4d3a;
+  background: #2e7a5e;
   color: white;
   padding: 8px 24px;
   border-radius: 9999px;

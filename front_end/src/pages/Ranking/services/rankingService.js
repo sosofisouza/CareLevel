@@ -32,19 +32,22 @@ export async function getRanking(aba = 'nivel', usuarioId = null) {
       emoji:    eq.emoji,
     }))
 
-    const lista = ordenadas.slice(3).map((eq, i) => ({
+    const usuario    = usuarios.find(u => u.userId === usuarioId)
+    const posEquipe  = usuario ? ordenadas.findIndex(eq => eq.equipeId === usuario.equipeId) + 1 : null
+    const equipeInfo = equipes.find(eq => eq.equipeId === usuario?.equipeId)
+
+    const lista = ordenadas.slice(3, 10).map((eq, i) => ({
       pos:      i + 4,
       equipeId: eq.equipeId,
       nome:     eq.nome,
       valor:    fmt(eq.carepoints),
+      isVoce:   eq.equipeId === usuario?.equipeId,
     }))
 
-    const usuario     = usuarios.find(u => u.userId === usuarioId)
-    const minhaEquipe = usuario ? ordenadas.find(eq => eq.equipeId === usuario.equipeId) : null
-    const posEquipe   = minhaEquipe ? ordenadas.indexOf(minhaEquipe) + 1 : null
-    const equipeInfo  = equipes.find(eq => eq.equipeId === usuario?.equipeId)
+    const minhaEquipeNaTop10 = posEquipe != null && posEquipe <= 10
+    const minhaEquipe = ordenadas.find(eq => eq.equipeId === usuario?.equipeId)
 
-    const voce = minhaEquipe ? {
+    const voce = minhaEquipe && !minhaEquipeNaTop10 ? {
       pos:   posEquipe,
       nome:  `Sua Equipe (${equipeInfo?.nome ?? '—'})`,
       valor: fmt(minhaEquipe.carepoints),
@@ -56,11 +59,13 @@ export async function getRanking(aba = 'nivel', usuarioId = null) {
   const chave = CHAVE_MAP[aba] ?? 'carepoints'
 
   const todosOrdenados = [...usuarios].sort((a, b) => b[chave] - a[chave])
-  const semEuOrdenados = todosOrdenados.filter(u => u.userId !== usuarioId)
+  const euIndex        = todosOrdenados.findIndex(u => u.userId === usuarioId)
+  const euPosicao      = euIndex + 1
+  const eu             = euIndex >= 0 ? todosOrdenados[euIndex] : null
 
-  const top3 = semEuOrdenados.slice(0, 3).map((u, i) => ({
+  const top3 = todosOrdenados.slice(0, 3).map((u, i) => ({
     userId:  u.userId,
-    nome:    u.nome,
+    nome:    u.userId === usuarioId ? 'Você' : u.nome,
     valor:   fmt(u[chave]),
     medalha: MEDALHAS[i],
     posicao: i + 1,
@@ -68,18 +73,16 @@ export async function getRanking(aba = 'nivel', usuarioId = null) {
     letra:   u.nome.charAt(0),
   }))
 
-  const lista = semEuOrdenados.slice(3).map((u, i) => ({
+  const lista = todosOrdenados.slice(3, 10).map((u, i) => ({
     pos:    i + 4,
     userId: u.userId,
-    nome:   u.nome,
+    nome:   u.userId === usuarioId ? 'Você' : u.nome,
     valor:  fmt(u[chave]),
+    isVoce: u.userId === usuarioId,
   }))
 
-  const posEu = todosOrdenados.findIndex(u => u.userId === usuarioId) + 1
-  const eu    = usuarios.find(u => u.userId === usuarioId)
-
-  const voce = eu ? {
-    pos:    posEu || todosOrdenados.length,
+  const voce = eu && euPosicao > 10 ? {
+    pos:    euPosicao,
     userId: eu.userId,
     nome:   'Você',
     valor:  fmt(eu[chave]),

@@ -28,7 +28,7 @@ function Bar({ b, maxVal }) {
         className={styles.bar}
         style={{
           height: `${heightPx}px`,
-          background: b.destaque ? "#53ad8b" : "#387a60",
+          background: b.destaque ? "#c8f0e0" : "#5bbf99",
         }}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={() => setTooltip(null)}
@@ -61,7 +61,7 @@ function HistoricoRow({ row }) {
   return (
     <div
       className={styles.historicoRow}
-      style={{ background: row.tipo === "debito" ? "#3a8a69" : "#6fcfaa" }}
+      style={{ background: row.tipo === "debito" ? "#3d9a72" : "#5bbf99" }}
     >
       <div className={styles.historicoDate}>
         <div className={styles.historicoIcon}>
@@ -114,7 +114,7 @@ export default function CarePoints() {
                 <p className={styles.cardValidade}>
                   Válidos até {dados?.validadePoints ?? "—"}
                 </p>
-                <button className={styles.btnResgate}>RESGATE AQUI</button>
+                <button className={styles.btnResgate} onClick={() => navigate('/recompensas')}>RESGATE AQUI</button>
               </div>
 
               {/* Direita (gráfico) */}
@@ -157,16 +157,14 @@ export default function CarePoints() {
                 ))}
               </div>
 
-              {historico.length > PAGE_SIZE && (
-                <div className={styles.verMaisWrapper}>
-                  <button
-                    onClick={() => navigate("/carepoints/historico")}
-                    className={styles.btnVerMais}
-                  >
-                    Ver mais
-                  </button>
-                </div>
-              )}
+              <div className={styles.verMaisWrapper}>
+                <button
+                  onClick={() => navigate("/carepoints/historico")}
+                  className={styles.btnVerMais}
+                >
+                  Ver tudo
+                </button>
+              </div>
             </div>
           </div>
 

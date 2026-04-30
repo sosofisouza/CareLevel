@@ -1,18 +1,22 @@
 import React from 'react';
 import './CareMoodColumn.css';
 
-export default function CareMoodColumn({ onQuestionario }) {
+export default function CareMoodColumn({ onQuestionario, jaRespondeuHoje }) {
   return (
     <div className="cm-col">
       <div className="cm-title-bar">CareMood©</div>
 
       <div className="card cm-card">
         <p className="cm-subtitle">
-          Responda o questionário para avaliar seus sentimentos e impressões do dia de hoje!
+          {jaRespondeuHoje
+            ? 'Você já respondeu o questionário hoje, volte amanhã para atualizar os resultados.'
+            : 'Responda o questionário para avaliar seus sentimentos e impressões do dia de hoje!'}
         </p>
-        <button className="btn-quest" onClick={onQuestionario}>
-          QUESTIONÁRIO
-        </button>
+        {!jaRespondeuHoje && (
+          <button className="btn-quest" onClick={onQuestionario}>
+            QUESTIONÁRIO
+          </button>
+        )}
       </div>
 
       <div className="card cm-camera-card">

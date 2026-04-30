@@ -131,6 +131,7 @@
   cursor: pointer;
   z-index: 102;
   flex-shrink: 0;
+  color: #2e7a5e;
 }
 
 .overlay {

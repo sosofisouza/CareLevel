@@ -4,6 +4,7 @@ import NavBar from "../../Components/NavBar/NavBar";
 import ConquistaTooltip from "./ConquistaTooltip";
 import AlterarDestaqueModal from "./AlterarDestaqueModal";
 import { fetchConquistas, salvarDestaque } from "../../services/api";
+import { useUser } from "../../Components/UserContext/UserContext";
 import styles from "./Conquistas.module.css";
 
 function EmblemaItem({ label }) {
@@ -148,6 +149,7 @@ function Medal({ faded = false, tooltipData }) {
 }
 
 export default function Conquistas() {
+  const { user } = useUser();
   const [dados, setDados] = useState(null);
   const [destaque, setDestaque] = useState("");
   const [modalAberto, setModalAberto] = useState(false);
@@ -206,7 +208,12 @@ export default function Conquistas() {
               </svg>
             </div>
 
-            <span className={styles.destaqueBadge}>{destaque}</span>
+            <div className={styles.destaqueBox}>
+              {user.nivel != null && (
+                <span className={styles.nivelBadge}>NÍVEL {user.nivel}</span>
+              )}
+              <span className={styles.destaqueBadge}>{destaque}</span>
+            </div>
 
             <button
               className={styles.btnAlterar}

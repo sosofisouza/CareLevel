@@ -4,13 +4,11 @@ import NavBar from "../../Components/NavBar/NavBar";
 import { fetchCarepoints } from "../../services/api";
 import styles from "./CarePointsHistorico.module.css";
 
-const PAGE_SIZE = 4;
-
 function HistoricoRow({ row }) {
   return (
     <div
       className={styles.historicoRow}
-      style={{ background: row.tipo === "debito" ? "#3a8a69" : "#6fcfaa" }}
+      style={{ background: row.tipo === "debito" ? "#3d9a72" : "#5bbf99" }}
     >
       <div className={styles.historicoDate}>
         <div className={styles.historicoIcon}>
@@ -37,11 +35,9 @@ export default function CarePointsHistorico() {
       .catch(console.error);
   }, []);
 
-  const restante = historico
-    .slice(PAGE_SIZE)
-    .filter((row) =>
-      row.atividade.toLowerCase().includes(busca.toLowerCase())
-    );
+  const historicoFiltrado = historico.filter((row) =>
+    row.atividade.toLowerCase().includes(busca.toLowerCase())
+  );
 
   return (
     <div className={styles.page}>
@@ -82,8 +78,8 @@ export default function CarePointsHistorico() {
             </div>
 
             <div className={styles.tabelaLinhas}>
-              {restante.length > 0 ? (
-                restante.map((row, i) => <HistoricoRow key={i} row={row} />)
+              {historicoFiltrado.length > 0 ? (
+                historicoFiltrado.map((row, i) => <HistoricoRow key={i} row={row} />)
               ) : (
                 <p className={styles.semResultados}>
                   Nenhum resultado encontrado.

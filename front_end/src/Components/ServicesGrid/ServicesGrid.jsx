@@ -16,7 +16,7 @@ const services = [
   { id: 'ranking',    label: 'Ranking',     icon: BarChart2 },
   { id: 'recompensas',label: 'Recompensas', icon: Gift },
   { id: 'conquistas', label: 'Conquistas',  icon: Medal },
-  { id: 'pontos',     label: 'Pontos',      icon: Activity },
+  { id: 'pontos',     label: 'CarePoints',  icon: Activity },
 ];
 
 export default function ServicesGrid({ onNavigate }) {

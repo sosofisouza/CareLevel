@@ -130,15 +130,19 @@ export default function RankingPage() {
                     posicao={item.pos}
                     nome={item.nome}
                     valor={item.valor}
+                    destaque={item.isVoce}
                   />
                 ))}
                 {voce && (
-                  <RankingItem
-                    posicao={voce.pos}
-                    nome={voce.nome}
-                    valor={voce.valor}
-                    destaque
-                  />
+                  <>
+                    <div style={{ borderTop: '1px dashed rgba(0,0,0,0.15)', margin: '4px 0' }} />
+                    <RankingItem
+                      posicao={voce.pos}
+                      nome={voce.nome}
+                      valor={voce.valor}
+                      destaque
+                    />
+                  </>
                 )}
               </>
             )}

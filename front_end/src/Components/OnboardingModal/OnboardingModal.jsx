@@ -60,12 +60,12 @@ function PointsIcon() {
 }
 
 const features = [
-  { Icon: ClockIcon,     label: 'Missões',     desc: 'Tarefas e objetivos a serem cumpridos.' },
-  { Icon: MoodIcon,      label: 'CareMood',    desc: 'Monitoramento de humor e sugestões de atividades.' },
-  { Icon: RankingIcon,   label: 'Ranking',     desc: 'Comparação de seu desempenho com outros usuários.' },
-  { Icon: RecompensaIcon,label: 'Recompensas', desc: 'Prêmios oferecidos pelo seu progresso.' },
-  { Icon: ConquistaIcon, label: 'Conquistas',  desc: 'Insígnias obtidas por completar desafios.' },
-  { Icon: PointsIcon,    label: 'CarePoints',  desc: 'Acumulados ao completar missões e desafios.' },
+  { Icon: ClockIcon,      label: 'Missões',     desc: 'Tarefas e objetivos a serem cumpridos.' },
+  { Icon: MoodIcon,       label: 'CareMood',    desc: 'Monitoramento de humor e sugestões de atividades.' },
+  { Icon: RankingIcon,    label: 'Ranking',     desc: 'Comparação de seu desempenho com outros usuários.' },
+  { Icon: RecompensaIcon, label: 'Recompensas', desc: 'Prêmios oferecidos pelo seu progresso.' },
+  { Icon: ConquistaIcon,  label: 'Conquistas',  desc: 'Insígnias obtidas por completar desafios.' },
+  { Icon: PointsIcon,     label: 'CarePoints',  desc: 'Acumulados ao completar missões e desafios.' },
 ];
 
 export default function OnboardingModal({ onDone }) {
@@ -80,14 +80,17 @@ export default function OnboardingModal({ onDone }) {
   }
 
   return (
-    <div className={styles.overlay}>
-      <div className={styles.modal}>
+    // Bootstrap: posicionamento do overlay
+    <div className={`${styles.overlay} d-flex align-items-center justify-content-center`}>
+      {/* Bootstrap: estrutura vertical do modal */}
+      <div className={`${styles.modal} d-flex flex-column`}>
 
         {step === 1 && (
           <>
-            <div className={styles.titlePill}>BEM VINDO A CARELEVEL</div>
+            <div className={`${styles.titlePill} align-self-center`}>BEM VINDO A CARELEVEL</div>
 
-            <div className={styles.card}>
+            {/* Bootstrap: layout interno do card */}
+            <div className={`${styles.card} d-flex flex-column`}>
               <p className={styles.greeting}>Bem-vindo(a)!</p>
               <p className={styles.text}>
                 A plataforma CareLevel foi desenvolvida para ajudá-lo a melhorar
@@ -99,9 +102,11 @@ export default function OnboardingModal({ onDone }) {
                 No sistema você encontrará as seguintes áreas:
               </p>
 
-              <ul className={styles.featureList}>
+              {/* Bootstrap: lista em coluna */}
+              <ul className={`${styles.featureList} d-flex flex-column`}>
                 {features.map(({ Icon, label, desc }) => (
-                  <li key={label} className={styles.featureItem}>
+                  // Bootstrap: item em linha
+                  <li key={label} className={`${styles.featureItem} d-flex align-items-start`}>
                     <span className={styles.featureIcon}><Icon /></span>
                     <span><strong>{label}:</strong> {desc}</span>
                   </li>
@@ -109,7 +114,8 @@ export default function OnboardingModal({ onDone }) {
               </ul>
             </div>
 
-            <div className={styles.footer}>
+            {/* Bootstrap: botão alinhado à direita */}
+            <div className={`${styles.footer} d-flex justify-content-end`}>
               <button className={styles.btnPrimary} onClick={() => setStep(2)}>
                 SEGUINTE
               </button>
@@ -119,9 +125,9 @@ export default function OnboardingModal({ onDone }) {
 
         {step === 2 && (
           <>
-            <div className={styles.titlePill}>TERMOS E CONDIÇÕES</div>
+            <div className={`${styles.titlePill} align-self-center`}>TERMOS E CONDIÇÕES</div>
 
-            <div className={styles.card}>
+            <div className={`${styles.card} d-flex flex-column`}>
               <p className={styles.sectionTitle}>Consentimento LGPD</p>
               <p className={styles.text}>
                 Para continuar, precisamos do seu consentimento para tratar apenas
@@ -143,7 +149,7 @@ export default function OnboardingModal({ onDone }) {
               </p>
             </div>
 
-            <div className={styles.footer}>
+            <div className={`${styles.footer} d-flex justify-content-end`}>
               <button className={styles.btnSecondary} onClick={() => setStep(2)}>
                 RECUSAR
               </button>

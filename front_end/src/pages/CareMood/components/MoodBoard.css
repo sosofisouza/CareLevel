@@ -1,3 +1,7 @@
+/* ============================================================
+   MoodBoard — mobile-first
+   ============================================================ */
+
 .moodboard-wrap {
   display: flex;
   flex-direction: column;
@@ -5,30 +9,65 @@
 }
 
 .section-title {
-  font-size: 24px;
+  font-size: 18px;
   font-weight: 700;
   color: var(--c-900);
+}
+
+@media (min-width: 640px) {
+  .section-title {
+    font-size: 22px;
+  }
+}
+
+@media (min-width: 900px) {
+  .section-title {
+    font-size: 24px;
+  }
 }
 
 .section-title.center { text-align: center; }
 .section-title.white  { color: #fff; }
 
+/* ── Barra dos dias ── */
 .mood-bar {
   background: var(--c-300);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
-  height: 130px;
+  /* altura automática no mobile, fixa no desktop */
+  min-height: 100px;
   display: flex;
   align-items: center;
   justify-content: space-around;
-  padding: 0 32px;
+  padding: 16px 12px;
+}
+
+@media (min-width: 500px) {
+  .mood-bar {
+    min-height: 120px;
+    padding: 0 24px;
+  }
+}
+
+@media (min-width: 768px) {
+  .mood-bar {
+    height: 130px;
+    min-height: unset;
+    padding: 0 32px;
+  }
 }
 
 .mood-day {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
+}
+
+@media (min-width: 500px) {
+  .mood-day {
+    gap: 10px;
+  }
 }
 
 .mood-day--today .mood-dot {
@@ -37,9 +76,21 @@
 }
 
 .day-label {
-  font-size: 16px;
+  font-size: 11px;
   font-weight: 590;
   color: var(--c-900);
+}
+
+@media (min-width: 500px) {
+  .day-label {
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 768px) {
+  .day-label {
+    font-size: 16px;
+  }
 }
 
 .day-label--today {
@@ -47,13 +98,30 @@
   color: var(--c-800);
 }
 
+/* Bolinhas menores no mobile para caber os 7 dias sem overflow */
 .mood-dot {
-  width: 50px;
-  height: 50px;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
-  border: 8px solid #fff;
+  border: 5px solid #fff;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
   transition: background-color 0.3s ease;
+}
+
+@media (min-width: 500px) {
+  .mood-dot {
+    width: 42px;
+    height: 42px;
+    border-width: 6px;
+  }
+}
+
+@media (min-width: 768px) {
+  .mood-dot {
+    width: 50px;
+    height: 50px;
+    border-width: 8px;
+  }
 }
 
 .mood-dot--future {

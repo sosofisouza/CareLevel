@@ -22,7 +22,7 @@ export default function App() {
     <AuthProvider>
       <UserProvider>
         <Routes>
-          <Route path="/login" element={<PerfilBeneficiario />} />
+          <Route path="/login" element={<CareMoodPage />} />
           <Route path="/unauthorized" element={<Unauthorized />} />
 
           <Route

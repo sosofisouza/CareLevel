@@ -1,7 +1,9 @@
 /* =====================================================
-   CarePoints.module.css
+   CarePoints.module.css — mobile-first
+   Breakpoints: 500px | 640px | 900px
    ===================================================== */
 
+/* ===== BASE ===== */
 .page {
   background: #e6f4f0;
   min-height: 100vh;
@@ -9,10 +11,17 @@
   padding-bottom: 40px;
 }
 
+/* ===== LAYOUT ===== */
 .main {
-  padding: 32px 16px;
+  padding: 20px 12px;
   display: flex;
   justify-content: center;
+}
+
+@media (min-width: 640px) {
+  .main {
+    padding: 32px 16px;
+  }
 }
 
 .container {
@@ -20,7 +29,13 @@
   max-width: 850px;
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  gap: 24px;
+}
+
+@media (min-width: 640px) {
+  .container {
+    gap: 40px;
+  }
 }
 
 /* ===== TOP SECTION ===== */
@@ -29,54 +44,87 @@
   justify-content: center;
 }
 
-/* ===== CARD + GRAFICO ===== */
+/* ===== CARD + GRÁFICO ===== */
+
+/* Mobile: empilha pontos acima, gráfico abaixo */
 .cardGrafico {
   display: flex;
-  border-radius: 35px;
+  flex-direction: column;
+  border-radius: 24px;
   overflow: hidden;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
   width: 100%;
   max-width: 620px;
-  height: 260px;
 }
 
+/* 500px+: layout lado a lado com altura fixa */
+@media (min-width: 500px) {
+  .cardGrafico {
+    flex-direction: row;
+    border-radius: 35px;
+    height: 260px;
+  }
+}
+
+/* --- Lado esquerdo (pontos) --- */
 .cardLeft {
   background: #93d3bc;
-  padding: 24px;
+  padding: 20px 16px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
-  width: 50%;
+  width: 100%;
+}
+
+@media (min-width: 500px) {
+  .cardLeft {
+    width: 50%;
+    padding: 24px;
+  }
 }
 
 .cardPontos {
-  font-size: 52px;
+  font-size: 36px;
   font-weight: 900;
   color: white;
   margin: 0;
+  line-height: 1;
+}
+
+@media (min-width: 500px) {
+  .cardPontos {
+    font-size: 52px;
+  }
 }
 
 .cardTitulo {
-  font-size: 26px;
+  font-size: 18px;
   font-weight: 700;
   color: white;
   line-height: 1.2;
   margin: 0;
 }
 
+@media (min-width: 500px) {
+  .cardTitulo {
+    font-size: 26px;
+  }
+}
+
 .cardValidade {
-  font-size: 12px;
+  font-size: 11px;
   color: rgba(255, 255, 255, 0.7);
   margin: 0;
 }
 
+/* Botão com área de toque mínima de 44px em mobile */
 .btnResgate {
   background: #53ad8b;
   color: white;
   border: none;
-  padding: 8px 20px;
+  padding: 10px 22px;
   border-radius: 9999px;
   font-size: 10px;
   font-weight: 900;
@@ -86,18 +134,28 @@
   text-transform: uppercase;
   transition: filter 0.15s;
   font-family: inherit;
+  min-height: 36px;
 }
 
 .btnResgate:hover {
   filter: brightness(0.95);
 }
 
+/* --- Lado direito (gráfico) --- */
 .cardRight {
   background: #1a4d3a;
-  width: 50%;
-  padding: 16px;
+  width: 100%;
+  padding: 16px 16px 20px;
   display: flex;
   flex-direction: column;
+  /* sem height fixo no mobile: expande para conter as barras */
+}
+
+@media (min-width: 500px) {
+  .cardRight {
+    width: 50%;
+    padding: 16px;
+  }
 }
 
 .graficoLabel {
@@ -115,10 +173,19 @@
   align-items: flex-end;
   justify-content: space-around;
   flex: 1;
-  padding: 0 8px;
+  padding: 0 4px;
+  /* altura mínima garante que as barras sejam visíveis no mobile */
+  min-height: 130px;
 }
 
-/* ===== BAR ===== */
+@media (min-width: 500px) {
+  .graficoArea {
+    padding: 0 8px;
+    min-height: unset;
+  }
+}
+
+/* ===== BARRA DO GRÁFICO ===== */
 .barWrapper {
   display: flex;
   flex-direction: column;
@@ -127,10 +194,16 @@
 }
 
 .bar {
-  width: 28px;
+  width: 20px;
   border-radius: 4px 4px 0 0;
   cursor: pointer;
   transition: opacity 0.15s;
+}
+
+@media (min-width: 500px) {
+  .bar {
+    width: 28px;
+  }
 }
 
 .bar:hover {
@@ -138,10 +211,16 @@
 }
 
 .barLabel {
-  font-size: 10px;
+  font-size: 9px;
   color: #93d3bc;
   text-transform: uppercase;
   font-weight: 700;
+}
+
+@media (min-width: 500px) {
+  .barLabel {
+    font-size: 10px;
+  }
 }
 
 .barTooltip {
@@ -163,8 +242,6 @@
   clip-path: polygon(0 0, 100% 0, 50% 100%);
 }
 
-/* ===== PRODUTOS ===== */
-
 /* ===== HISTÓRICO SECTION ===== */
 .historicoSection {
   display: flex;
@@ -172,6 +249,7 @@
   gap: 16px;
 }
 
+/* Mobile: título e busca empilhados */
 .historicoHeader {
   display: flex;
   flex-direction: column;
@@ -187,13 +265,19 @@
 }
 
 .historicoTitulo {
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 900;
   color: #1a4d3a;
   margin: 0;
 }
 
+@media (min-width: 640px) {
+  .historicoTitulo {
+    font-size: 20px;
+  }
+}
 
+/* ===== BUSCA ===== */
 .buscaWrapper {
   position: relative;
   width: 100%;
@@ -208,38 +292,55 @@
 .buscaInput {
   background: #93d3bc;
   border-radius: 9999px;
-  padding: 6px 16px;
+  /* padding-right largo deixa espaço para o ícone */
+  padding: 8px 40px 8px 16px;
   font-size: 12px;
   color: #1a4d3a;
   width: 100%;
   border: none;
   outline: none;
   font-family: inherit;
+  box-sizing: border-box;
+  min-height: 36px;
 }
 
 .buscaInput::placeholder {
   color: rgba(26, 77, 58, 0.6);
 }
 
+/* Ícone centralizado verticalmente */
 .buscaIcon {
   position: absolute;
-  right: 16px;
-  top: 6px;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
   color: #1a4d3a;
+  pointer-events: none;
+  line-height: 1;
 }
 
 /* ===== TABELA ===== */
 .tabelaWrapper {
   background: #93d3bc;
-  border-radius: 40px;
-  padding: 24px;
+  border-radius: 28px;
+  padding: 16px;
   box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.1);
+  /* previne que conteúdo interno quebre o layout */
+  overflow: hidden;
 }
 
+@media (min-width: 500px) {
+  .tabelaWrapper {
+    border-radius: 40px;
+    padding: 24px;
+  }
+}
+
+/* Cabeçalho oculto no mobile; visível em telas ≥ 640px */
 .tabelaHeader {
   display: none;
-  grid-template-columns: 120px 1fr 120px;
-  padding: 0 32px;
+  grid-template-columns: 100px 1fr 110px;
+  padding: 0 16px;
   margin-bottom: 8px;
   color: #1a4d3a;
   font-weight: 700;
@@ -251,6 +352,8 @@
 @media (min-width: 640px) {
   .tabelaHeader {
     display: grid;
+    grid-template-columns: 120px 1fr 120px;
+    padding: 0 24px;
   }
 }
 
@@ -264,18 +367,30 @@
   gap: 8px;
 }
 
-/* ===== HISTORICO ROW ===== */
+/* ===== LINHA DO HISTÓRICO ===== */
+
+/* Colunas menores no mobile para caber em 320px+ sem overflow */
 .historicoRow {
   border-radius: 9999px;
-  padding: 10px 24px;
+  padding: 10px 14px;
   display: grid;
-  grid-template-columns: 100px 1fr 100px;
+  grid-template-columns: 80px 1fr 80px;
   align-items: center;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  /* impede que o texto vaze para fora do card */
+  min-width: 0;
+}
+
+@media (min-width: 500px) {
+  .historicoRow {
+    padding: 10px 20px;
+    grid-template-columns: 100px 1fr 100px;
+  }
 }
 
 @media (min-width: 640px) {
   .historicoRow {
+    padding: 10px 24px;
     grid-template-columns: 120px 1fr 120px;
   }
 }
@@ -283,52 +398,111 @@
 .historicoDate {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 5px;
+  min-width: 0;
+}
+
+@media (min-width: 500px) {
+  .historicoDate {
+    gap: 8px;
+  }
 }
 
 .historicoIcon {
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.2);
   display: flex;
   align-items: center;
   justify-content: center;
   color: white;
-  font-size: 10px;
+  font-size: 9px;
   font-weight: 700;
+  flex-shrink: 0;
+}
+
+@media (min-width: 500px) {
+  .historicoIcon {
+    width: 20px;
+    height: 20px;
+    font-size: 10px;
+  }
 }
 
 .historicoDateText {
-  font-size: 10px;
+  font-size: 9px;
   color: white;
   font-weight: 700;
+  /* impede overflow na coluna de data */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@media (min-width: 500px) {
+  .historicoDateText {
+    font-size: 10px;
+  }
 }
 
 .historicoAtividade {
-  font-size: 10px;
+  font-size: 9px;
   color: white;
   font-weight: 700;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  padding-right: 16px;
+  padding-right: 8px;
+  min-width: 0;
+}
+
+@media (min-width: 500px) {
+  .historicoAtividade {
+    font-size: 10px;
+    padding-right: 14px;
+  }
+}
+
+@media (min-width: 640px) {
+  .historicoAtividade {
+    padding-right: 16px;
+  }
 }
 
 .historicoPontosWrapper {
   text-align: right;
+  min-width: 0;
 }
 
 .historicoPontos {
   background: #1a4d3a;
   color: white;
-  padding: 4px 16px;
+  padding: 4px 8px;
   border-radius: 9999px;
-  font-size: 11px;
+  font-size: 9px;
   font-weight: 900;
   display: inline-block;
-  min-width: 70px;
+  min-width: 54px;
   text-align: center;
+  /* evita que o badge quebre o layout */
+  white-space: nowrap;
+}
+
+@media (min-width: 500px) {
+  .historicoPontos {
+    padding: 4px 12px;
+    font-size: 10px;
+    min-width: 62px;
+  }
+}
+
+@media (min-width: 640px) {
+  .historicoPontos {
+    padding: 4px 16px;
+    font-size: 11px;
+    min-width: 70px;
+  }
 }
 
 /* ===== VER MAIS ===== */
@@ -341,7 +515,7 @@
 .btnVerMais {
   background: #1a4d3a;
   color: white;
-  padding: 6px 24px;
+  padding: 8px 24px;
   border-radius: 9999px;
   font-size: 10px;
   font-weight: 700;
@@ -351,6 +525,7 @@
   cursor: pointer;
   font-family: inherit;
   transition: filter 0.15s;
+  min-height: 36px;
 }
 
 .btnVerMais:hover {

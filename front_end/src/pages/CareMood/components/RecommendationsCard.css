@@ -1,17 +1,47 @@
+/* ============================================================
+   RecommendationsCard — mobile-first
+   ============================================================ */
+
 .rec-card {
   background: #fff;
-  padding: 32px 32px 40px;
-  min-height: 541px;
+  /* sem min-height fixo no mobile */
+  padding: 20px 20px 28px;
   display: flex;
   flex-direction: column;
 }
 
+@media (min-width: 640px) {
+  .rec-card {
+    padding: 28px 28px 36px;
+  }
+}
+
+@media (min-width: 900px) {
+  .rec-card {
+    padding: 32px 32px 40px;
+    min-height: 541px;
+  }
+}
+
 .rec-title {
-  font-size: 24px;
+  font-size: 18px;
   font-weight: 590;
   color: var(--c-900);
   text-align: center;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
+}
+
+@media (min-width: 640px) {
+  .rec-title {
+    font-size: 22px;
+    margin-bottom: 12px;
+  }
+}
+
+@media (min-width: 900px) {
+  .rec-title {
+    font-size: 24px;
+  }
 }
 
 .rec-divider {
@@ -21,41 +51,95 @@
   background: var(--c-900);
   border-radius: 2px;
   align-self: center;
-  margin-bottom: 24px;
+  margin-bottom: 20px;
 }
 
+@media (min-width: 640px) {
+  .rec-divider {
+    margin-bottom: 24px;
+  }
+}
+
+/* ── Layout interno ── */
+/* Mobile: avatar + status em cima, textos abaixo */
 .rec-layout {
   display: flex;
-  gap: 24px;
+  flex-direction: column;
+  gap: 20px;
   flex: 1;
 }
 
-/* ── Avatar column ── */
+@media (min-width: 640px) {
+  .rec-layout {
+    flex-direction: row;
+    gap: 24px;
+  }
+}
+
+/* ── Coluna do avatar ── */
 .rec-avatar-col {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;        /* mobile: avatar e status lado a lado */
   align-items: center;
-  gap: 12px;
+  gap: 16px;
   flex-shrink: 0;
 }
 
+@media (min-width: 640px) {
+  .rec-avatar-col {
+    flex-direction: column;   /* desktop: empilhados */
+    align-items: center;
+    gap: 12px;
+  }
+}
+
+/* Anel verde do avatar — menor no mobile */
 .avatar-green-ring {
   position: relative;
-  width: 160px;
-  height: 160px;
+  width: 110px;
+  height: 110px;
   border-radius: 50%;
   background: var(--c-700);
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
+}
+
+@media (min-width: 640px) {
+  .avatar-green-ring {
+    width: 140px;
+    height: 140px;
+  }
+}
+
+@media (min-width: 900px) {
+  .avatar-green-ring {
+    width: 160px;
+    height: 160px;
+  }
 }
 
 .avatar-photo {
-  width: 138px;
-  height: 138px;
+  width: 94px;
+  height: 94px;
   border-radius: 50%;
   overflow: hidden;
   flex-shrink: 0;
+}
+
+@media (min-width: 640px) {
+  .avatar-photo {
+    width: 120px;
+    height: 120px;
+  }
+}
+
+@media (min-width: 900px) {
+  .avatar-photo {
+    width: 138px;
+    height: 138px;
+  }
 }
 
 .avatar-photo img {
@@ -73,21 +157,39 @@
 
 .avatar-status-dot {
   position: absolute;
-  top: 8px;
-  right: 8px;
-  width: 28px;
-  height: 28px;
+  top: 6px;
+  right: 6px;
+  width: 22px;
+  height: 22px;
   border-radius: 50%;
   border: 3px solid #fff;
   box-shadow: 0 2px 6px rgba(0,0,0,0.2);
   transition: background-color 0.4s ease;
 }
 
+@media (min-width: 640px) {
+  .avatar-status-dot {
+    top: 8px;
+    right: 8px;
+    width: 26px;
+    height: 26px;
+  }
+}
+
+@media (min-width: 900px) {
+  .avatar-status-dot {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+/* ── Box de status ── */
 .status-box {
   background: var(--c-600);
   border-radius: var(--radius);
-  width: 130px;
-  min-height: 87px;
+  /* mobile: ocupa o espaço restante ao lado do avatar */
+  flex: 1;
+  min-height: 78px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -97,43 +199,84 @@
   box-shadow: var(--shadow);
 }
 
+@media (min-width: 640px) {
+  .status-box {
+    width: 130px;
+    flex: none;
+    min-height: 87px;
+  }
+}
+
 .status-label {
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 700;
   color: #fff;
 }
 
+@media (min-width: 640px) {
+  .status-label {
+    font-size: 16px;
+  }
+}
+
 .status-colored-pill {
   border-radius: 25px;
-  width: 105px;
-  height: 31px;
+  width: 90px;
+  height: 29px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
+@media (min-width: 640px) {
+  .status-colored-pill {
+    width: 105px;
+    height: 31px;
+  }
+}
+
 .status-value {
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 800;
   color: #fff;
   letter-spacing: 0.5px;
 }
 
-/* ── Texts column ── */
+@media (min-width: 640px) {
+  .status-value {
+    font-size: 13px;
+  }
+}
+
+/* ── Coluna de textos ── */
 .rec-texts-col {
   background: var(--c-50);
   border-radius: var(--radius);
-  padding: 20px 18px;
+  padding: 16px 14px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 16px;
   flex: 1;
 }
 
+@media (min-width: 640px) {
+  .rec-texts-col {
+    padding: 20px 18px;
+    gap: 20px;
+  }
+}
+
 .rec-texts-col p {
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 700;
   color: #000;
-  line-height: 17px;
+  line-height: 1.6;
   text-align: justify;
+}
+
+@media (min-width: 900px) {
+  .rec-texts-col p {
+    font-size: 14px;
+    line-height: 17px;
+  }
 }

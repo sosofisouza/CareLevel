@@ -1,5 +1,3 @@
-/* RecompensaCard.module.css */
-
 .card {
   background: #fff;
   border-radius: var(--raio-card);
@@ -15,10 +13,9 @@
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
 }
 
-/* ── Imagem ── */
 .imagemWrap {
   width: 100%;
-  height: 180px;
+  aspect-ratio: 16 / 9;
   overflow: hidden;
   background: #e8f5ef;
 }
@@ -30,13 +27,13 @@
   display: block;
 }
 
-/* ── Rodapé verde ── */
 .rodape {
   background: var(--cor-primaria);
-  padding: 14px 16px 16px;
+  padding: 12px 14px 14px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 8px;
+  flex: 1;
 }
 
 .nome {
@@ -63,7 +60,6 @@
   color: #fff;
 }
 
-/* ── Botão Resgatar ── */
 .btnResgatar {
   background: var(--cor-primaria-escura);
   color: #fff;
@@ -77,8 +73,29 @@
   cursor: pointer;
   transition: filter 0.18s;
   width: 100%;
+  margin-top: auto;
 }
 
 .btnResgatar:hover {
   filter: brightness(1.12);
+}
+
+@media (min-width: 900px) {
+  .imagemWrap {
+    aspect-ratio: 4 / 3;
+  }
+
+  .rodape {
+    padding: 14px 16px 16px;
+    gap: 10px;
+  }
+
+  .nome {
+    font-size: 14px;
+  }
+
+  .btnResgatar {
+    font-size: 13px;
+    padding: 11px;
+  }
 }

@@ -1,5 +1,7 @@
 import { NavLink, useNavigate } from 'react-router-dom';
-import { Flame, CircleHelp, User, LogOut } from 'lucide-react';
+import { Flame, User, LogOut, Menu } from 'lucide-react';
+import { useState } from 'react';
+
 import { useUser } from '../UserContext/UserContext';
 import { useAuth } from '../../context/AuthContext';
 
@@ -20,6 +22,8 @@ export default function Navbar() {
   const { logout: authLogout } = useAuth();
   const navigate = useNavigate();
 
+  const [menuOpen, setMenuOpen] = useState(false);
+
   const handleLogout = () => {
     userLogout();
     authLogout();
@@ -29,15 +33,28 @@ export default function Navbar() {
   return (
     <header className={styles.navbar}>
       <div className={styles.inner}>
+        
+        {/* Logo */}
         <NavLink to="/" className={styles.logoArea}>
           <Logo size={32} />
         </NavLink>
 
-        <nav className={styles.nav}>
+        {/* BOTÃO BURGER (mobile) */}
+        <button
+          className={styles.burger}
+          onClick={() => setMenuOpen(!menuOpen)}
+          aria-label="Abrir menu"
+        >
+          <Menu size={24} />
+        </button>
+
+        {/* MENU */}
+        <nav className={`${styles.nav} ${menuOpen ? styles.navOpen : ''}`}>
           {NAV_LINKS.map(({ label, to }) => (
             <NavLink
               key={to}
               to={to}
+              onClick={() => setMenuOpen(false)}
               className={({ isActive }) =>
                 `${styles.navLink} ${isActive ? styles.navLinkActive : ''}`
               }
@@ -47,9 +64,9 @@ export default function Navbar() {
           ))}
         </nav>
 
+        {/* AÇÕES */}
         <div className={styles.actions}>
-
-
+          
           <div className={styles.badge} title="Sequência de dias">
             <Flame size={20} color="#ff6b35" fill="#ff6b35" />
             <span className={styles.badgeText}>{user.streak}</span>
@@ -66,11 +83,22 @@ export default function Navbar() {
             </span>
           </div>
 
-          <NavLink to="/perfil" className={styles.avatarBtn} title="Meu perfil" aria-label="Ir para o perfil">
+          <NavLink
+            to="/perfil"
+            className={styles.avatarBtn}
+            title="Meu perfil"
+            aria-label="Ir para o perfil"
+          >
             <User size={20} color="var(--text-dark)" />
           </NavLink>
 
-          <button type="button" className={styles.logoutBtn} onClick={handleLogout} title="Sair" aria-label="Fazer logout">
+          <button
+            type="button"
+            className={styles.logoutBtn}
+            onClick={handleLogout}
+            title="Sair"
+            aria-label="Fazer logout"
+          >
             <LogOut size={18} color="var(--green-primary)" />
             <span>Sair</span>
           </button>

@@ -4,8 +4,10 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: calc(100vh - 56px);
+  min-height: calc(100vh - 64px);
   gap: 1.25rem;
+  padding: 2rem 1rem;
+  text-align: center;
 }
 
 .textoDesativado {
@@ -28,23 +30,27 @@
   border: none;
   cursor: pointer;
   transition: filter 0.2s;
+  width: 100%;
+  max-width: 280px;
 }
 
 .btnAtivar:hover { filter: brightness(1.1); }
 
 /* ===== MAIN ===== */
 .main {
-  width: 90%;
-  max-width: 1040px;
-  margin: 2rem auto;
+  width: 100%;
+  max-width: 1200px;
+  margin: 1.25rem auto;
+  padding: 0 16px;
+  box-sizing: border-box;
   display: flex;
-  gap: 2rem;
-  align-items: flex-start;
+  flex-direction: column;
+  gap: 1rem;
 }
 
 /* ===== COLUNA ESQUERDA ===== */
 .colunaEsquerda {
-  width: 37%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -57,15 +63,16 @@
   padding: 4px;
   display: flex;
   gap: 4px;
-  box-shadow: 0 4px 14px rgba(42,120,90,0.10);
+  box-shadow: 0 4px 14px rgba(42, 120, 90, 0.10);
 }
 
 .filtroBtn {
   flex: 1;
-  padding: 0.5rem 0.5rem;
+  min-width: 0;
+  padding: 0.5rem 0.25rem;
   border-radius: 14px;
   font-family: inherit;
-  font-size: 0.75rem;
+  font-size: 0.68rem;
   font-weight: 700;
   color: #2d5240;
   cursor: pointer;
@@ -83,27 +90,27 @@
 .filtroBtn.ativo {
   background: var(--cor-primaria);
   color: #fff;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
 }
 
 /* ===== GRÁFICO ===== */
 .graficoCard {
   background: #fff;
   border-radius: 20px;
-  padding: 1.5rem 1.5rem 1rem;
-  box-shadow: 0 4px 14px rgba(42,120,90,0.10);
+  padding: 1.25rem 1.25rem 0.75rem;
+  box-shadow: 0 4px 14px rgba(42, 120, 90, 0.10);
 }
 
 .graficoBarras {
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  gap: 1.25rem;
-  height: 120px;
+  gap: 1rem;
+  height: 100px;
 }
 
 .barra {
-  width: 2.8rem;
+  width: 2.5rem;
   background: var(--cor-primaria);
   border-radius: 6px 6px 0 0;
 }
@@ -117,12 +124,12 @@
   background: #fff;
   border-radius: 20px;
   padding: 1.25rem 1rem;
-  box-shadow: 0 4px 14px rgba(42,120,90,0.10);
+  box-shadow: 0 4px 14px rgba(42, 120, 90, 0.10);
 }
 
 /* ===== COLUNA DIREITA ===== */
 .colunaDireita {
-  flex: 1;
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -135,7 +142,7 @@
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  box-shadow: 0 8px 24px rgba(42,120,90,0.14);
+  box-shadow: 0 8px 24px rgba(42, 120, 90, 0.14);
 }
 
 /* ===== BOTÃO DESATIVAR ===== */
@@ -152,35 +159,86 @@
   border: none;
   cursor: pointer;
   transition: filter 0.2s;
-  box-shadow: 0 4px 14px rgba(42,120,90,0.10);
+  box-shadow: 0 4px 14px rgba(42, 120, 90, 0.10);
+  width: 100%;
+  max-width: 280px;
 }
 
 .btnDesativar:hover { filter: brightness(1.12); }
 
 .carregando {
-  color: rgba(255,255,255,0.7);
+  color: rgba(255, 255, 255, 0.7);
   text-align: center;
   padding: 1rem;
   font-size: 0.875rem;
 }
 
 /* ===== RESPONSIVO ===== */
-@media (max-width: 768px) {
+@media (min-width: 500px) {
   .main {
-    flex-direction: column;
-    width: 95%;
-    margin: 1.25rem auto;
-    gap: 1rem;
+    padding: 0 20px;
+  }
+
+  .filtroBtn {
+    font-size: 0.75rem;
+    padding: 0.5rem 0.5rem;
+  }
+
+  .graficoBarras {
+    gap: 1.25rem;
+    height: 110px;
+  }
+
+  .barra {
+    width: 2.8rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .main {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 1.5rem;
+    padding: 0 28px;
+    margin: 1.5rem auto;
   }
 
   .colunaEsquerda {
-    width: 100%;
+    width: 37%;
+    flex-shrink: 0;
   }
 
-  .btnDesativar,
-  .btnAtivar {
-    width: 80%;
-    text-align: center;
+  .colunaDireita {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .graficoBarras {
+    height: 120px;
+  }
+
+  .graficoCard {
+    padding: 1.5rem 1.5rem 1rem;
+  }
+}
+
+@media (min-width: 900px) {
+  .main {
+    gap: 2rem;
+    margin: 2rem auto;
+  }
+}
+
+@media (min-width: 1200px) {
+  .main {
+    padding: 0 40px;
+  }
+}
+
+@media (max-width: 360px) {
+  .filtroBtn {
+    font-size: 0.62rem;
+    padding: 0.45rem 0.2rem;
   }
 }
 
@@ -193,19 +251,22 @@
   align-items: center;
   justify-content: center;
   z-index: 100;
+  padding: 16px;
+  box-sizing: border-box;
 }
 
 .modal {
   background: #fff;
   border-radius: 20px;
-  padding: 2rem 1.75rem;
-  width: 90%;
+  padding: 1.75rem 1.5rem;
+  width: 100%;
   max-width: 400px;
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 0.75rem;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
 }
 
 .modalTitulo {
@@ -221,7 +282,7 @@
 }
 
 .modalPergunta {
-  font-size: 1.05rem;
+  font-size: 1rem;
   font-weight: 700;
   color: #1a3328;
   text-align: center;
@@ -268,4 +329,26 @@
 .btnCancelar:hover,
 .btnConfirmar:hover {
   filter: brightness(1.1);
+}
+
+@media (max-width: 360px) {
+  .modal {
+    padding: 1.5rem 1.25rem;
+    border-radius: 16px;
+  }
+
+  .modalIcone svg {
+    width: 50px;
+    height: 50px;
+  }
+
+  .modalPergunta {
+    font-size: 0.9rem;
+  }
+
+  .btnCancelar,
+  .btnConfirmar {
+    font-size: 0.78rem;
+    padding: 0.7rem;
+  }
 }

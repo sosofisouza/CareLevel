@@ -15,13 +15,14 @@ import RecompensasPage from './pages/Recompensas/RecompensasPage.jsx';
 import CarePoints from './pages/CarePoints/CarePoints.jsx';
 import CarePointsHistorico from './pages/CarePoints/CarePointsHistorico.jsx';
 import Conquistas from './pages/Conquistas/Conquistas.jsx';
+import ProfileCard from './Components/ProfileCard/ProfileCard.jsx';
 
 export default function App() {
   return (
     <AuthProvider>
       <UserProvider>
         <Routes>
-          <Route path="/login" element={<Login />} />
+          <Route path="/login" element={<PerfilBeneficiario />} />
           <Route path="/unauthorized" element={<Unauthorized />} />
 
           <Route

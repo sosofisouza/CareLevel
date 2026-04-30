@@ -18,12 +18,12 @@ const C = {
 };
 
 const lineColors = {
-  Financeiro: "#4aaf85",
-  Marketing: "#e74c3c",
-  Operações: "#3498db",
-  RH: "#f39c12",
-  TI: "#2d7a5f",
-  Vendas: "#9b59b6",
+  Financeiro: "#e7e7e7",
+  Marketing: "#e7e7e7",
+  Operações: "#e7e7e7",
+  RH: "#e7e7e7",
+  TI: "#e7e7e7",
+  Vendas: "#e7e7e7",
 };
 
 function ActivityMap() {

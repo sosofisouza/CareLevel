@@ -1,17 +1,3 @@
-/**
- * components/Modal/Modal.jsx
- * COMPONENTE — Modal reutilizável para os 4 estados do fluxo de resgate.
- *
- * Props:
- *   - tipo         : 'confirmacao' | 'erro-saldo' | 'erro-processamento' | 'sucesso'
- *   - recompensa   : objeto { nome, custo } — a recompensa sendo resgatada
- *   - saldoAtual   : número — pontos do usuário antes do resgate
- *   - onCancelar   : fechar o modal sem fazer nada
- *   - onConfirmar  : confirmar o resgate (usado em 'confirmacao')
- *   - onTentarNovamente : tentar o resgate de novo (usado em 'erro-processamento')
- *   - onMaisResgates    : ir para mais resgates (usado em 'sucesso')
- *   - onVoltarMenu      : voltar ao menu (fecha o modal)
- */
 import styles from './Modal.module.css'
 
 export default function Modal({
@@ -24,35 +10,25 @@ export default function Modal({
   onMaisResgates,
   onVoltarMenu,
 }) {
-  // Calcula o saldo final para o modal de confirmação
   const saldoFinal = saldoAtual - (recompensa?.custo ?? 0)
 
   return (
-    /* Overlay escuro por trás do modal */
     <div className={styles.overlay} onClick={onCancelar}>
-
-      {/* Caixa do modal — stopPropagation evita fechar ao clicar dentro */}
       <div
         className={`${styles.caixa} ${styles[tipo.replace('-', '')]}`}
         onClick={(e) => e.stopPropagation()}
       >
-
-        {/* ══════════════════════════════
-            MODAL: CONFIRMAÇÃO DE RESGATE
-            ══════════════════════════════ */}
         {tipo === 'confirmacao' && (
           <>
             <h2 className={styles.tituloConfirmacao}>RESGATE DE RECOMPENSAS</h2>
 
             <div className={styles.confirmacaoCorpo}>
-              {/* Miniatura da recompensa */}
               <img
                 src={recompensa.imagem}
                 alt={recompensa.nome}
                 className={styles.miniaturaImg}
               />
 
-              {/* Detalhes financeiros */}
               <div className={styles.detalhes}>
                 <p className={styles.detalhesNome}>{recompensa.nome}</p>
 
@@ -88,9 +64,6 @@ export default function Modal({
           </>
         )}
 
-        {/* ══════════════════════════════
-            MODAL: ERRO — SALDO INSUFICIENTE
-            ══════════════════════════════ */}
         {tipo === 'erro-saldo' && (
           <>
             <div className={styles.iconeErro}>✕</div>
@@ -109,9 +82,6 @@ export default function Modal({
           </>
         )}
 
-        {/* ══════════════════════════════
-            MODAL: ERRO — PROCESSAMENTO
-            ══════════════════════════════ */}
         {tipo === 'erro-processamento' && (
           <>
             <div className={styles.iconeErro}>✕</div>
@@ -130,9 +100,6 @@ export default function Modal({
           </>
         )}
 
-        {/* ══════════════════════════════
-            MODAL: SUCESSO
-            ══════════════════════════════ */}
         {tipo === 'sucesso' && (
           <>
             <div className={styles.iconeSucesso}>✓</div>
@@ -150,7 +117,6 @@ export default function Modal({
             </div>
           </>
         )}
-
       </div>
     </div>
   )

@@ -10,7 +10,7 @@ const formatadores = {
 const MEDALHAS = ['🥇', '🥈', '🥉']
 
 const CHAVE_MAP = {
-  pontos: 'carepoints',
+  pontos: 'pontosVitalicio',
   nivel:  'nivel',
   streak: 'streak',
 }

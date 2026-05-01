@@ -20,7 +20,7 @@ export default function CareMoodColumn({ onQuestionario, jaRespondeuHoje }) {
       </div>
 
       <a
-        href="https://www.cvv.org.br/"
+        href="https://www.careplus.com.br/assets/documents/mental-health.pdf"
         target="_blank"
         rel="noopener noreferrer"
         className="card cm-mental-card cm-mental-link"

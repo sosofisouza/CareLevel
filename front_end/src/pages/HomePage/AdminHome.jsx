@@ -5,6 +5,7 @@ import {
   ResponsiveContainer
 } from "recharts";
 import { fetchAdmin } from "../../services/api";
+import Footer from "../../Components/Footer/Footer";
 
 const C = {
   bg: "#e8f0ec",
@@ -239,6 +240,7 @@ export default function HRDashboard() {
         </div>
 
       </div>
+      <Footer />
     </div>
   );
 }

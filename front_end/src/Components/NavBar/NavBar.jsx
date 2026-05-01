@@ -73,7 +73,14 @@ export default function Navbar() {
             <span className={styles.badgeText}>{user.streak}</span>
           </div>
 
-          <div className={styles.badge} title="CarePoints">
+          <NavLink
+            to="/carepoints"
+            className={({ isActive }) =>
+              [styles.badge, styles.badgeLink, isActive ? styles.badgeActive : ''].join(' ')
+            }
+            style={{ textDecoration: 'none', color: 'inherit' }}
+            title="CarePoints"
+          >
             <img
               src="/512x512bb%204.svg"
               alt="CarePoints"
@@ -82,11 +89,13 @@ export default function Navbar() {
             <span className={styles.badgeText}>
               {user.points.toLocaleString('pt-BR')}
             </span>
-          </div>
+          </NavLink>
 
           <NavLink
             to="/perfil"
-            className={styles.avatarBtn}
+            className={({ isActive }) =>
+              [styles.avatarBtn, isActive ? styles.avatarBtnActive : ''].join(' ')
+            }
             title="Meu perfil"
             aria-label="Ir para o perfil"
           >

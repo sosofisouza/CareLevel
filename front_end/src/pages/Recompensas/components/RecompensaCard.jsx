@@ -15,7 +15,11 @@ export default function RecompensaCard({ recompensa, onResgatar }) {
         <p className={styles.nome}>{recompensa.nome}</p>
 
         <div className={styles.custo}>
-          <span className={styles.icone}>⏱</span>
+          <span className={styles.icone}><img
+                        src="/512x512bb%204.svg"
+                        alt="CarePoints"
+                        className={styles.pointsIconImage}
+                      /></span>
           <span className={styles.custoValor}>{recompensa.custo}</span>
         </div>
 

@@ -186,9 +186,6 @@ export default function Quiz({ onVoltar, onComplete }) {
               )}
             </p>
             <div className="fim-botoes">
-              <button className="quiz-btn-iniciar" onClick={reiniciar}>
-                Responder novamente
-              </button>
               <button className="quiz-btn-voltar" onClick={handleVoltar}>
                 Voltar ao início
               </button>

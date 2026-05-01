@@ -19,7 +19,7 @@ const slides = [
   {
     id: 'slide-3',
     headlineParts: ['','Cuide',' de você com propósito'],
-    imageSrc: '/banner_idea.jpg',
+    imageSrc: '/banner_idea3.png',
     imageAlt: 'Pessoa meditando',
   },
 ];

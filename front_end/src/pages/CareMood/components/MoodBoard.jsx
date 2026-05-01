@@ -19,7 +19,7 @@ export default function MoodBoard({ weekData = [] }) {
   const [selected, setSelected] = useState(null);
 
   function handleDotClick(day) {
-    if (day.isFuture) return;
+    if (day.isFuture && !day.status) return;
     setSelected(day);
   }
 
@@ -29,7 +29,7 @@ export default function MoodBoard({ weekData = [] }) {
       <div className="mood-bar card">
         {weekData.map((day) => {
           const { label, status, color, isToday, isFuture } = day;
-          const clickable = !isFuture;
+          const clickable = !isFuture || !!status;
           return (
             <div
               className={`mood-day ${isToday ? 'mood-day--today' : ''}`}

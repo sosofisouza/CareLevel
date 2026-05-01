@@ -3,6 +3,12 @@ import { fetchUsuario } from '../../services/api';
 
 const UserContext = createContext(null);
 
+const LOCAL_DELTA_KEY = 'carepoints_local_delta';
+
+function getLocalDelta() {
+  return parseInt(localStorage.getItem(LOCAL_DELTA_KEY) || '0', 10);
+}
+
 const DEFAULT_USER = {
   id: null,
   name: 'Visitante',
@@ -14,15 +20,16 @@ const DEFAULT_USER = {
 };
 
 export function UserProvider({ children }) {
-  const [user, setUser] = useState(DEFAULT_USER);
+  const [user, setUser] = useState({ ...DEFAULT_USER, points: DEFAULT_USER.points + getLocalDelta() });
 
   useEffect(() => {
     fetchUsuario()
       .then((data) => {
+        const localDelta = getLocalDelta();
         setUser((prev) => ({
           ...prev,
           streak: data.streak,
-          points: data.carepoints,
+          points: data.carepoints + localDelta,
           nivel: data.nivel,
           name: data.nome,
           avatar: data.avatar,
@@ -41,6 +48,14 @@ export function UserProvider({ children }) {
 
   const updatePoints = (delta) => {
     setUser((prev) => ({ ...prev, points: prev.points + delta }));
+    const current = getLocalDelta();
+    localStorage.setItem(LOCAL_DELTA_KEY, String(current + delta));
+  };
+
+  // Usa saldo vindo do servidor sem alterar o localDelta (evita dupla dedução em resgates)
+  const setServerPoints = (serverPoints) => {
+    const localDelta = getLocalDelta();
+    setUser((prev) => ({ ...prev, points: serverPoints + localDelta }));
   };
 
   const updateStreak = (streak) => {
@@ -48,7 +63,7 @@ export function UserProvider({ children }) {
   };
 
   return (
-    <UserContext.Provider value={{ user, login, logout, updatePoints, updateStreak }}>
+    <UserContext.Provider value={{ user, login, logout, updatePoints, setServerPoints, updateStreak }}>
       {children}
     </UserContext.Provider>
   );

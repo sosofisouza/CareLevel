@@ -9,7 +9,7 @@ import { useUser } from '../../Components/UserContext/UserContext';
 import styles from './Recompensas.module.css';
 
 export default function RecompensasPage() {
-  const { user, updatePoints } = useUser();
+  const { user, setServerPoints } = useUser();
   const [pontos, setPontos] = useState(user.points);
   const [recompensas, setRecompensas] = useState([]);
   const [recompensaSelecionada, setRecompensaSelecionada] = useState(null);
@@ -35,9 +35,8 @@ export default function RecompensasPage() {
   async function handleConfirmar() {
     try {
       const resultado = await resgatarRecompensa(recompensaSelecionada.id);
-      const delta = -recompensaSelecionada.custo;
       setPontos(resultado.saldo);
-      updatePoints(delta);
+      setServerPoints(resultado.saldo);
       setTipoModal('sucesso');
     } catch (err) {
       const msg = err?.response?.data?.erro ?? '';

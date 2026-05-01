@@ -90,7 +90,13 @@ export default function CarePoints() {
   }, []);
 
   const analise = dados?.analise ?? [];
-  const historico = dados?.historico ?? [];
+
+  const localMissionsHistory = (() => {
+    try { return JSON.parse(localStorage.getItem('caremissions_history') || '[]'); }
+    catch { return []; }
+  })();
+
+  const historico = [...localMissionsHistory, ...(dados?.historico ?? [])];
   const maxVal = analise.length > 0 ? Math.max(...analise.map((b) => b.valor)) : 1;
 
   const historicoFiltrado = historico.filter((row) =>
@@ -172,6 +178,7 @@ export default function CarePoints() {
 
         </div>
       </main>
+      <Footer />
     </div>
   );
 }

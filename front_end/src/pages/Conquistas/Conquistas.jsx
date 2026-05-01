@@ -276,6 +276,7 @@ export default function Conquistas() {
           </div>
         </div>
       </main>
+      <Footer />
     </div>
   );
 }

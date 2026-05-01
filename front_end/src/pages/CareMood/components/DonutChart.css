@@ -27,44 +27,56 @@
 
 .donut-area {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  gap: 20px;
   flex: 1;
-  /* overflow: visible para os labels absolutos não serem cortados */
-  overflow: visible;
 }
 
-/* Wrap responsivo: no mobile ocupa a largura disponível até 340px */
 .donut-chart-wrap {
-  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
-  max-width: 340px;
-  /* overflow visible para labels fora dos limites do SVG */
-  overflow: visible;
 }
 
-.donut-label {
-  position: absolute;
-  font-size: 12px;
+.donut-legend {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px 24px;
+  width: 100%;
+  max-width: 300px;
+}
+
+.donut-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.donut-legend-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.donut-legend-name {
+  font-size: 13px;
   font-weight: 600;
   color: #131313;
-  text-align: center;
-  line-height: 17px;
+  flex: 1;
 }
 
-@media (min-width: 500px) {
-  .donut-label {
+.donut-legend-pct {
+  font-size: 13px;
+  font-weight: 700;
+  color: #555;
+}
+
+@media (min-width: 640px) {
+  .donut-legend-name,
+  .donut-legend-pct {
     font-size: 14px;
-    line-height: 19px;
-  }
-}
-
-@media (min-width: 900px) {
-  .donut-label {
-    font-size: 15px;
   }
 }
 

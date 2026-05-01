@@ -18,6 +18,7 @@
       "nivel": 40,
       "streak": 38,
       "carepoints": 18740,
+      "pontosVitalicio": 21500,
       "equipeId": "eq_003"
     },
     {
@@ -26,6 +27,7 @@
       "nivel": 33,
       "streak": 35,
       "carepoints": 15230,
+      "pontosVitalicio": 18200,
       "equipeId": "eq_001"
     },
     {
@@ -34,6 +36,7 @@
       "nivel": 32,
       "streak": 29,
       "carepoints": 12580,
+      "pontosVitalicio": 15800,
       "equipeId": "eq_002"
     },
     {
@@ -42,6 +45,7 @@
       "nivel": 30,
       "streak": 28,
       "carepoints": 10320,
+      "pontosVitalicio": 12400,
       "equipeId": "eq_001"
     },
     {
@@ -50,6 +54,7 @@
       "nivel": 28,
       "streak": 28,
       "carepoints": 9870,
+      "pontosVitalicio": 11200,
       "equipeId": "eq_005"
     },
     {
@@ -58,6 +63,7 @@
       "nivel": 27,
       "streak": 27,
       "carepoints": 8640,
+      "pontosVitalicio": 9800,
       "equipeId": "eq_004"
     },
     {
@@ -66,6 +72,7 @@
       "nivel": 25,
       "streak": 26,
       "carepoints": 7410,
+      "pontosVitalicio": 8600,
       "equipeId": "eq_002"
     },
     {
@@ -74,6 +81,7 @@
       "nivel": 20,
       "streak": 20,
       "carepoints": 6990,
+      "pontosVitalicio": 7800,
       "equipeId": "eq_006"
     },
     {
@@ -82,6 +90,7 @@
       "nivel": 8,
       "streak": 18,
       "carepoints": 890,
+      "pontosVitalicio": 1200,
       "equipeId": "eq_007"
     },
     {
@@ -90,6 +99,7 @@
       "nivel": 6,
       "streak": 14,
       "carepoints": 620,
+      "pontosVitalicio": 950,
       "equipeId": "eq_008"
     },
     {

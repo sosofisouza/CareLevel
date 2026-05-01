@@ -113,7 +113,7 @@ export default function RankingPage() {
           <div className={styles.podioCard}>
             {loading
               ? <p className={styles.carregando}>Carregando...</p>
-              : <Podium top3={podio} />
+              : <Podium top3={podio} showIcon={abaAtual === 'pontos'} />
             }
           </div>
 
@@ -133,6 +133,7 @@ export default function RankingPage() {
                     nome={item.nome}
                     valor={item.valor}
                     destaque={item.isVoce}
+                    showIcon={abaAtual === 'pontos'}
                   />
                 ))}
                 {voce && (
@@ -143,6 +144,7 @@ export default function RankingPage() {
                       nome={voce.nome}
                       valor={voce.valor}
                       destaque
+                      showIcon={abaAtual === 'pontos'}
                     />
                   </>
                 )}

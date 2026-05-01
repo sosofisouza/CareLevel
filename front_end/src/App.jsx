@@ -22,6 +22,7 @@ export default function App() {
     <AuthProvider>
       <UserProvider>
         <Routes>
+          <Route path="/" element={<Navigate to="/login" replace />} />
           <Route path="/login" element={<Login />} />
           <Route path="/unauthorized" element={<Unauthorized />} />
 

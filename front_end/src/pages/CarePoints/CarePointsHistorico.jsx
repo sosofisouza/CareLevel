@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import NavBar from "../../Components/NavBar/NavBar";
+import Footer from "../../Components/Footer/Footer";
 import { fetchCarepoints } from "../../services/api";
 import styles from "./CarePointsHistorico.module.css";
 
@@ -31,7 +32,13 @@ export default function CarePointsHistorico() {
 
   useEffect(() => {
     fetchCarepoints()
-      .then((dados) => setHistorico(dados.historico ?? []))
+      .then((dados) => {
+        const localHistory = (() => {
+          try { return JSON.parse(localStorage.getItem('caremissions_history') || '[]'); }
+          catch { return []; }
+        })();
+        setHistorico([...localHistory, ...(dados.historico ?? [])]);
+      })
       .catch(console.error);
   }, []);
 
@@ -90,6 +97,7 @@ export default function CarePointsHistorico() {
 
         </div>
       </main>
+      <Footer />
     </div>
   );
 }

@@ -88,6 +88,15 @@
   transition: width 0.2s, height 0.2s;
 }
 
+.badgeLink:hover {
+  border: 2px solid var(--green-primary);
+  transition: border-color 0.2s, border-width 0.2s;
+}
+
+.badgeActive {
+  border: 2px solid var(--green-primary) !important;
+}
+
 .avatarBtn {
   display: flex;
   align-items: center;
@@ -102,6 +111,11 @@
 .avatarBtn:hover {
   border-color: var(--green-primary);
   background: #e8f5ef;
+}
+
+.avatarBtnActive {
+  border-color: var(--green-primary) !important;
+  background: #e8f5ef !important;
 }
 
 .logoutBtn {

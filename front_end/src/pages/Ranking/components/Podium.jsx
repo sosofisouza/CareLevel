@@ -19,10 +19,10 @@ function Avatar({ item }) {
   )
 }
 
-export default function Podium({ top3 = [] }) {
+export default function Podium({ top3 = [], showIcon = false }) {
   if (top3.length === 0) return null
 
-  
+
   const [segundo, primeiro, terceiro] = top3
 
   const renderItem = (item) => (
@@ -32,7 +32,10 @@ export default function Podium({ top3 = [] }) {
         <span className={styles.medalha}>{item.medalha}</span>
       </div>
       <span className={styles.nome}>{item.nome}</span>
-      <span className={styles.valor}>{item.valor}</span>
+      <span className={styles.valor} style={showIcon ? { display: 'flex', alignItems: 'center', gap: 3 } : {}}>
+        {showIcon && <img src="/512x512bb%204.svg" alt="" width={12} height={12} style={{ flexShrink: 0 }} />}
+        {item.valor}
+      </span>
     </div>
   )
 

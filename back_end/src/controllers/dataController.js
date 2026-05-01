@@ -20,7 +20,15 @@ export function getUsuario(req, res) {
 }
 
 export function getRanking(req, res) {
-  res.json({ usuarios: db.usuarios, equipes: db.equipes })
+  const pontosVitalicio = db.historico
+    .filter(h => h.pontos > 0)
+    .reduce((acc, h) => acc + h.pontos, 0)
+
+  const usuarios = db.usuarios.map(u =>
+    u.userId === 'usr_logado' ? { ...u, pontosVitalicio } : u
+  )
+
+  res.json({ usuarios, equipes: db.equipes })
 }
 
 export function getMissoes(req, res) {

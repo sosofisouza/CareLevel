@@ -31,8 +31,8 @@ export default function HomePage() {
     <main className={styles.main}>
       <NavBar />
       <HeroBanner />
-      <ServicesGrid onNavigate={handleNavigate} />
       <DailyTracker />
+      <ServicesGrid onNavigate={handleNavigate} />
       <Footer />
       {showOnboarding && (
         <OnboardingModal onDone={() => setShowOnboarding(false)} />
